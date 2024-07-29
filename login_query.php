@@ -18,7 +18,7 @@ if (isset($_POST['login'])) {
         if ($fetch && password_verify($password, $fetch['password'])) {
             $_SESSION['user'] = $fetch['mem_id'];
             if ($username == 'admin') {
-                header("location: homenologin.php");
+                header("location: admin_layout.php");
             } else {
                 header("location: homelogin.php");
             }
@@ -34,5 +34,5 @@ if (isset($_POST['login'])) {
             <script>window.location = 'index.php'</script>
         ";
     }
-}
+} 
 ?>
