@@ -334,7 +334,7 @@ color: #5e5a5a;
   border-radius: 6px;
   margin: 2rem;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-
+  /* letter-spacing: 1px; */
 
 }
 
@@ -509,6 +509,17 @@ color: #5e5a5a;
   width: 48%;
 }
 
+.body-modify--modules {
+  width: 90%;
+  text-align: center;
+  margin: 2rem;
+}
+
+.label-change--modules {
+  display: flex;
+  justify-content: flex-start;
+}
+
 .body-modify input {
   width: 100%;
   border-radius: 4px;
@@ -642,6 +653,8 @@ table {
 
 
 th, td {
+    /* width: 100%;
+    height: 100%; */
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
@@ -653,18 +666,34 @@ th {
 }
 
 .td-modify {
+  width: 100%;
+  height: 100%;
   text-decoration: none;
   background-color: white !important;
-  z-index: 10000;
+  /* z-index: 10000; */
 }
 
 tr:hover {background-color: #f1dbc3;}
 
+.td {
+  display: flex;
+  align-items: center;
+}
+
+.td-modify {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .action_btn {
   text-decoration: none;
-  padding: 6px 24px;
+  padding: 8px 24px;
+  padding: auto;
   /* background-color: ; */
   color: var(--black-color);
+  border: 1px solid rgb(236, 233, 233);
+  cursor: pointer;
 }
 
 .action_btn--delete {
@@ -676,7 +705,7 @@ tr:hover {background-color: #f1dbc3;}
 .action_btn--edit {
   background-color: rgb(227, 163, 221);
   border-radius: 10px;
-  padding: 6px 32px ;
+  padding: 8px 32px ;
 }
 
 .action_btn--delete:hover {
@@ -704,6 +733,10 @@ tr:hover {background-color: #f1dbc3;}
 }
 
 .add_student:hover {
-  cursor: pointer;
-  background-color: rgb(58, 186, 58);
+    cursor: pointer;
+    background-color: rgb(58, 186, 58);
+}
+
+.info-footer-btn--modules {
+    padding: 0px 4rem;
 }

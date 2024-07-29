@@ -1,12 +1,3 @@
-<?php 
-include 'includes/DatabaseConnection.php';
-include 'includes/DatabaseFunctions.php';
-
-
-$count = getCountById($pdo);
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,7 +33,7 @@ $count = getCountById($pdo);
                             </li>
     
                             <li class="admin-function">
-                                <a href="modules_show.php">Modules Manage</a>
+                                <a href="">Modules Manage</a>
                             </li>
     
                             <li class="admin-function">
@@ -63,7 +54,7 @@ $count = getCountById($pdo);
                         <div class="home_navbar-success">
                             <div href="" class="navbar-success-welcome-name">
                                 Hi, <span>
-                                    Đức Nguyễn
+                                    DevTrek. Admin
                                 </span>
                             </div>
 
@@ -84,27 +75,50 @@ $count = getCountById($pdo);
             </header>
 
 
-            <div class="container__content container__content--student-list">
-                <div class="container__h1-button">
-                    <h1 class="student_list_mdf">Student List : <?php echo $count?></h1>
-                    <a href="add_students_ui.php"><button class="add_student">ADD NEW STUDENT</button></a>
-                </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Member ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>User Name</th>
-                                <th>Display Name</th>
-                                <th>Date of Birth</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php include 'fetch_students.php'; ?>
-                        </tbody>
-                    </table>    
-            </div>
+            <div class="container__content">
+                <div class="container-wrap">
+                    <form action="add_modules.php" method="post" class="container-wrap-personal" >
+                        <div class="contact-info-header">
+                            <h1>Add Modules</h1>
+                        </div>
+
+                        <div class="contact-info-header">
+                            <h3>Fill the information below to create modules</h3>
+                        </div>
+
+
+                        <div class="body-modify body-modify--modules">
+                            <div class="label-change label-change--modules">
+                                <label for="modules_name">Modules Name</label> <br>
+                            </div>
+                            <input type="text" name="modules_name" placeholder="" >
+                        </div>
+
+                        <div class="body-modify body-modify--modules">
+                            <div class="label-change label-change--modules">
+                                <label for="modules_description">Modules Description</label> <br>
+                            </div>
+                            <input type="textarea" name="modules_description" placeholder="" >
+                        </div>
+
+                        <div class="body-modify body-modify--modules">
+                            <div class="label-change label-change--modules">
+                                <label for="create_time">Create Time</label> <br>
+                            </div>
+                            <input type="datetime-local" name="create_time" placeholder="" >
+                        </div>
+                        
+                        <div class="container-personal-info">
+                            <div class="info-footer-btn info-footer-btn--modules">
+                                <div class="button-modify button-modify-border-change">
+                                    <a href="modules_show.php">
+                                        <button name="cancel">Cancel</button>
+                                    </a>
+                                </div>
+
+                                <div class="button-modify button-modify-hover">
+                                    <button name="submit">Add Modules</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>

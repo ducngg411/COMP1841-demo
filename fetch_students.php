@@ -17,10 +17,15 @@ foreach ($results as $row) {
             <td>{$row['dob']}</td>
             <td>{$row['phone']}</td>
             <td>{$row['email']}</td>
-            td class='td-modify'>
-                <form action='deletestudents.php'>
-                    <input type='hidden' name='mem_id' value='<?=$row['mem_id']?>'>
-                    <input type='submit' class='action_btn action_btn--delete'value='Delete'>
+            <td class='td-modify'>
+                <form action='deletestudent.php' method='post' onsubmit='return confirm(\"Are you sure you want to delete this student?\")'>
+                    <input type='hidden' name='mem_id' value='{$row['mem_id']}'>
+                    <input type='submit' class='action_btn action_btn--delete' value='Delete'>
+                </form>
+
+                <form action='edit_student_ui.php' method='get'>
+                    <input type='hidden' name='mem_id' value='{$row['mem_id']}'>
+                    <input type='submit' class='action_btn action_btn--edit' value='Edit'>
                 </form>
             </td>
           </tr>";

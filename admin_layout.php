@@ -33,7 +33,7 @@
                             </li>
     
                             <li class="admin-function">
-                                <a href="">Modules Manage</a>
+                                <a href="modules_show.php">Modules Manage</a>
                             </li>
     
                             <li class="admin-function">

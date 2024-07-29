@@ -41,3 +41,53 @@ function registerUser($pdo, $data) {
         return "Please fill up the required fields!";
     }
 }
+
+function getCountById(PDO $pdo): int {
+    $sql = "SELECT COUNT(mem_id) AS count FROM member";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return $result['count'];
+}
+
+function getModulesById(PDO $pdo): int {
+    $sql = "SELECT COUNT(modules_id) AS count FROM modules";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return $result['count'];
+}
+
+
+function createModules($pdo, $data) {
+    if (!empty($data['modules_name']) && !empty($data['modules_description']) && !empty($data['create_time'])) {
+        try {
+            $modules_name = htmlspecialchars($data['modules_name']);
+            $modules_description = htmlspecialchars($data['modules_description']);
+            $create_time = htmlspecialchars($data['create_time']);
+
+            $sql = "INSERT INTO modules (modules_name, modules_description, create_time) VALUES (:modules_name, :modules_description, :create_time)";
+            $stmt = $pdo->prepare($sql);
+
+            $stmt->bindParam(':modules_name', $modules_name);
+            $stmt->bindParam(':modules_description', $modules_description);
+            $stmt->bindParam(':create_time', $create_time);
+
+
+            if ($stmt->execute()) {
+                // $_SESSION['message'] = array("text" => "User successfully created.", "alert" => "info");
+                header('Location: modules_show.php');
+                exit();
+            } else {
+                return "Failed to insert data.";
+            }
+
+        } catch (PDOException $e) {
+            return "Error: " . $e->getMessage();
+        }
+    } else {
+        return "Please fill up the required fields!";
+    }
+}
