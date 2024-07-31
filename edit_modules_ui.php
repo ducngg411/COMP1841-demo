@@ -1,3 +1,24 @@
+<?php
+include 'includes/DatabaseConnection.php';
+include 'includes/DatabaseFunctions.php';
+
+// $count = getCountById($pdo, $count);
+
+$modules_id = $_GET['modules_id'] ?? null;
+if (!$modules_id) {
+    header("Location: modules_show.php");
+    exit();
+}
+
+// Fetch current data
+$sql = "SELECT * FROM modules WHERE modules_id = ?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$modules_id]);
+$modules = $stmt->fetch(PDO::FETCH_ASSOC);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +54,7 @@
                             </li>
     
                             <li class="admin-function">
-                                <a href="">Modules Manage</a>
+                                <a href="modules_show.php">Modules Manage</a>
                             </li>
     
                             <li class="admin-function">
@@ -77,47 +98,50 @@
 
             <div class="container__content">
                 <div class="container-wrap">
-                    <form action="add_modules.php" method="post" class="container-wrap-personal" >
+                    <form action="edit_modules.php" method="post" class="container-wrap-personal" >
                         <div class="contact-info-header">
-                            <h1>Add New Modules</h1>
+                            <h1>Edit Modules</h1>
                         </div>
 
                         <div class="contact-info-header">
-                            <h3>Fill the information below to add a new modules</h3>
+                            <h3>Fill the information below to edit modules</h3>
                         </div>
 
+                        <div class="modules-info-body">
+                        <input type="hidden" name="modules_id" value="<?php echo $modules['modules_id']; ?>">
 
-                        <div class="body-modify body-modify--modules">
-                            <div class="label-change label-change--modules">
-                                <label for="modules_name">Modules Name</label> <br>
-                            </div>
-                            <input type="text" name="modules_name" placeholder="" >
-                        </div>
-
-                        <div class="body-modify body-modify--modules">
-                            <div class="label-change label-change--modules">
-                                <label for="modules_description">Modules Description</label> <br>
-                            </div>
-                            <input type="textarea" name="modules_description" placeholder="" >
-                        </div>
-
-                        <div class="body-modify body-modify--modules">
-                            <div class="label-change label-change--modules">
-                                <label for="create_time">Create Time</label> <br>
-                            </div>
-                            <input type="datetime-local" name="create_time" placeholder="" >
-                        </div>
-                        
-                        <div class="container-personal-info">
-                            <div class="info-footer-btn info-footer-btn--modules">
-                                <div class="button-modify button-modify-border-change">
-                                    <a href="modules_show.php">
-                                        <button name="cancel">Cancel</button>
-                                    </a>
+                            <div class="body-modify body-modify--modules">
+                                <div class="label-change label-change--modules">
+                                    <label for="modules_name">Modules Name</label> <br>
                                 </div>
-
-                                <div class="button-modify button-modify-hover">
-                                    <button name="submit">Add Modules</button>
+                                <input type="text" name="modules_name" placeholder="" value="<?php echo $modules['modules_name'];?>">
+                            </div>
+    
+                            <div class="body-modify body-modify--modules">
+                                <div class="label-change label-change--modules">
+                                    <label for="modules_description">Modules Description</label> <br>
+                                </div>
+                                <input type="text" name="modules_description" placeholder="" value="<?php echo $modules['modules_description'];?>">
+                            </div>
+    
+                            <div class="body-modify body-modify--modules">
+                                <div class="label-change label-change--modules">
+                                    <label for="create_time">Create Time</label> <br>
+                                </div>
+                                <input type="datetime-local" name="create_time" placeholder="" value="<?php echo $modules['create_time'];?>">>
+                            </div>
+                            
+                            <div class="container-personal-info">
+                                <div class="info-footer-btn info-footer-btn--modules">
+                                    <div class="button-modify button-modify-border-change">
+                                        <a href="modules_show.php">
+                                            <button name="cancel">Cancel</button>
+                                        </a>
+                                    </div>
+    
+                                    <div class="button-modify button-modify-hover">
+                                        <button type="submit">Update Modules</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

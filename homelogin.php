@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -239,7 +240,7 @@
                             </div>
                         </div>
 
-                        <div class="post-layout">
+                        <!-- <div class="post-layout">
                             <div class="post-layout-container">
                                 <div class="post-layout-avt">
                                     <img src="assets/img/avttest.jpg" alt="" class="post-layout-avt-modify">
@@ -1406,7 +1407,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
 

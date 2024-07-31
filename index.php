@@ -53,7 +53,7 @@
                 <div class="show_message">
                     <?php if(isset($_SESSION['message'])): ?>
                     <div class="alert"
-                        <?php echo $_SESSION['message']['alert'] ?> msg"><?php echo $_SESSION['message']['text'] ?></div>
+                        <?php echo $_SESSION['message']['alert'] ?> msg><?php echo $_SESSION['message']['text'] ?></div>
                 <script>
                     (function() {
                         removing the message 3 seconds after the page load
