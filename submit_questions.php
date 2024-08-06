@@ -1,0 +1,49 @@
+<?php 
+
+include 'includes/DatabaseConnection.php';
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $title   = $_POST['title'];
+    $content = $_POST['content'];
+    $code = $_POST['code'];
+    $mem_id = $_POST['mem_id'];
+    $modules_id = $_POST['modules_id'];
+
+    if (!empty($_FILES['image']['tmp_name'])) {
+        $image = $_FILES['image']['tmp_name'];
+        $imageContent = file_get_contents($image);
+        $imageType = $_FILES['image']['type'];
+
+        $stmt = $pdo->prepare("INSERT INTO questions (title, content, code,image, image_type, mem_id, modules_id) VALUES (?,?,?,?,?,?,?)");
+        $stmt->bindParam(1, $title);
+        $stmt->bindParam(2, $content);
+        $stmt->bindParam(3, $code);
+        $stmt->bindParam(4, $imageContent);
+        $stmt->bindParam(5, $imageType);
+        $stmt->bindParam(6, $mem_id);
+        $stmt->bindParam(7, $modules_id);
+    } else {
+        $stmt = $pdo->prepare("INSERT INTO questions (title, content, code, mem_id, modules_id) VALUES (?,?,?,?,?)");
+        $stmt->bindParam(1, $title);
+        $stmt->bindParam(2, $content);
+        $stmt->bindParam(3, $code);
+        $stmt->bindParam(4, $mem_id);
+        $stmt->bindParam(5, $modules_id);
+    }
+
+    try {
+        // Thực hiện chèn câu hỏi mới vào bảng questions
+        $stmt->execute();
+        
+        // Tăng question_count trong bảng modules
+        $stmt = $pdo->prepare("UPDATE modules SET questions_count = questions_count + 1 WHERE modules_id = ?");
+        $stmt->execute([$modules_id]);
+        
+        echo "Your question has been posted!";
+        header('Location: homelogin.php');
+        exit();
+    } catch (Exception $e) {
+        echo "Có lỗi xảy ra khi đăng câu hỏi: " . $e->getMessage();
+    }
+}
+?>

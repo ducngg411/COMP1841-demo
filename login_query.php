@@ -17,7 +17,8 @@ if (isset($_POST['login'])) {
         // Kiểm tra nếu người dùng tồn tại
         if ($fetch && password_verify($password, $fetch['password'])) {
             $_SESSION['user'] = $fetch['mem_id'];
-            if ($username == 'admin') {
+            $_SESSION['role'] = $fetch['role'];
+            if($_SESSION['role'] == 'admin') {
                 header("location: admin_layout.php");
             } else {
                 header("location: homelogin.php");

@@ -1,24 +1,26 @@
 <?php 
 
-include 'includes/DatabaseConnection.php';
-include 'includes/DatabaseFunctions.php';
+include_once 'includes/DatabaseConnection.php';
+include_once 'includes/DatabaseFunctions.php';
 
-$member = getMemberInfo($pdo);
+$mem_id = getMemberInfo($pdo);
+$count = getModulesById($pdo);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevTrek. Admin Site</title>
+    <title>Home Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="stylesheet" href="assets/css/question.css">
+    <!-- <link rel="stylesheet" href="assets/css/profile.css"> -->
+    <link rel="stylesheet" href="assets/css/header.css">
 
     <link rel="shortcut icon" type="image/x-icon" href="logo/fav.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -30,28 +32,32 @@ $member = getMemberInfo($pdo);
 <body>
     <div class="home_page">
         <div class="grid">
-            <header class="home__header home__header-profile-change">
+            <header class="home__header">
                 <nav class="home__navbar">
                     <ul class="home__navbar-list">
                         <li class="home__navbar-list-logo">
-                            <img src="assets/img/admin (4).png" alt="" class="home__navbar-list-logo-img">
+                            <img src="assets/img/devtrek.png" alt="" class="home__navbar-list-logo-img">
                         </li>
 
                         <ul class="home__navbar-funtion">
                             <li class="admin-function">
-                                <a href="students_show.php">Students Manage</a>
+                                <a href="homelogin.php">Home Page</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="modules_show.php">Modules Manage</a>
+                                <a href="modules_show_stu.php">Modules</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="">Questions Manage</a>
+                                <a href="author_show.php">Author</a>
                             </li>
-    
+
                             <li class="admin-function">
-                                <a href="">Feedback Receive</a>
+                                <a href="my_bookmark.php">My Bookmarks</a>
+                            </li>
+
+                            <li class="admin-function">
+                                <a href="my_question.php">My Questions</a>
                             </li>
                         </ul>
                     </ul>
@@ -64,12 +70,16 @@ $member = getMemberInfo($pdo);
                         <div class="home_navbar-success">
                             <div href="" class="navbar-success-welcome-name">
                                 Hi, <span>
-                                    <?php echo htmlspecialchars($member['displayname']) ?>
+                                <?php echo htmlspecialchars($mem_id['displayname'])?>
                                 </span>
                             </div>
 
                             <ul class="navbar-success-welcome-menu">
-                                <button class="success-welcome-menu-modify">Edit</button>
+                                <button class="success-welcome-menu-modify">
+                                    <a href="change_profile.php">
+                                        Edit
+                                    </a>    
+                                </button>
 
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">
@@ -84,17 +94,30 @@ $member = getMemberInfo($pdo);
                 </nav>
             </header>
 
-
             <div class="container__content">
-                <main class="container-right">
-                    <div class="container-home">
-                        <div class="container-home-welcome">
-                            <div class="home-welcome-avt">
-                                <img src="assets/img/avttest.jpg" alt="avt-change" width="100px" height="100px" style="border: 1px solid  rgb(238, 225, 225); border-radius: 50px;">
-                                <h1 class="">Welcome, <?php echo htmlspecialchars($member['displayname']) ?></h1>
-                                <p>Manage information with DevTrek. Admin</p>
-                            </div>
-                        </div>
-                    </div>
-                </main>
+                <div class="container__h1-button container__h1-button-question">
+                    <h1 class="student_list_mdf student_list_mdf--question">Modules List: <?php echo $count?></h1>
+                    <!-- <a href="create_question.php"><button class="add_student add_student-question"></button></a> -->
+                </div>
+
+                <div class="table-modify">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Modules ID</th>
+                                <th>Modules Name</th>
+                                <th>Modules Description</th>
+                                <th>Create Time</th>
+                                <th>Question Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php include 'fetch_modules_stu.php'; ?>
+                        </tbody>
+                    </table>    
+                </div>
             </div>
+        </div>
+    </div>    
+</div>
+</html>

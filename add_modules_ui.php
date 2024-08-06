@@ -75,7 +75,7 @@
             </header>
 
 
-            <div class="container__content">
+            <div class="container__content" >
                 <div class="container-wrap">
                     <form action="add_modules.php" method="post" class="container-wrap-personal" >
                         <div class="contact-info-header">
@@ -110,10 +110,8 @@
                         
                         <div class="container-personal-info">
                             <div class="info-footer-btn info-footer-btn--modules">
-                                <div class="button-modify button-modify-border-change">
-                                    <a href="modules_show.php">
-                                        <button name="cancel">Cancel</button>
-                                    </a>
+                                <div class="button-modify button-modify-border-change button-modify-a">
+                                    <a href="modules_show.php" class="button-modify" role="button">Cancel</a>
                                 </div>
 
                                 <div class="button-modify button-modify-hover">

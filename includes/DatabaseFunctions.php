@@ -51,6 +51,17 @@ function getCountById(PDO $pdo): int {
     return $result['count'];
 }
 
+function getCountByQuestionId(PDO $pdo): int {
+    $sql = "SELECT COUNT(id) AS count FROM questions";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([]);
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    
+    return $result['count'];
+}
+
+
+
 function getModulesById(PDO $pdo): int {
     $sql = "SELECT COUNT(modules_id) AS count FROM modules";
     $stmt = $pdo->prepare($sql);
@@ -91,3 +102,28 @@ function createModules($pdo, $data) {
         return "Please fill up the required fields!";
     }
 }
+
+function getMemberInfo($pdo) {
+    session_start(); // Bắt đầu session
+
+    // Kiểm tra xem session user có tồn tại không
+    if (!isset($_SESSION['user'])) {
+        header("Location: index.php"); // Điều hướng về trang đăng nhập nếu user chưa đăng nhập
+        exit();
+    }
+
+    $mem_id = $_SESSION['user'];
+
+    // Lấy thông tin của thành viên hiện tại
+    $sql = "SELECT * FROM member WHERE mem_id = ?";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$mem_id]);
+    $member = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$member) {
+        die("Member not found");
+    }
+
+    return $member;
+}
+?>
