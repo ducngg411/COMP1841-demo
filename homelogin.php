@@ -42,7 +42,7 @@ $member = getMemberInfo($pdo);
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/base.css">
 
-    <link rel="shortcut icon" type="image/x-icon" href="logo/fav.png">
+    <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -133,6 +133,11 @@ $member = getMemberInfo($pdo);
                     <li class="content-bar-change">
                         <h3 class="content-bar-authors">
                             <a href="my_question.php">MY QUESTIONS</a>
+                        </h3>
+                    </li>
+                    <li class="content-bar-change">
+                        <h3 class="content-bar-authors">
+                            <a href="admin_check.php">ADMIN SITE</a>
                         </h3>
                     </li>
                 </ul>
@@ -269,7 +274,7 @@ $member = getMemberInfo($pdo);
                             <?php foreach ($top_authors as $author): ?>
                             <div class="author-container-avt-split">
                                 <div class="author-container-avt">
-                                    <img src="assets/img/Blue Red Colorful Good Job Student Stickers.png" alt="avt-author" class="container-avt-modify">
+                                    <img src="assets/img/Blue Red Colorful Good Job Student Stickers (2).png" alt="avt-author" class="container-avt-modify">
                                 </div>
                                 <div class="author-container-content">
                                     <div class="container-content-modify">

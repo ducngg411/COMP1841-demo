@@ -10,12 +10,12 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($results as $row) {
     echo "<tr>
             <td>{$row['modules_id']}</td>
-            <td>{$row['modules_name']}</td>
+            <td><a href='modules_specific.php?modules_id={$row['modules_id']}'>{$row['modules_name']}</td>
             <td>{$row['modules_description']}</td>
             <td>{$row['create_time']}</td>
             <td>{$row['questions_count']}</td>
             <td class='td-modify td-modify--modules'>
-                <form action='delete_modules.php' method='post' onsubmit='return confirm(\"Are you sure you want to delete this student?\")'>
+                <form action='delete_modules.php' method='post' onsubmit='return confirm(\"Are you sure you want to delete this modules?\")'>
                     <input type='hidden' name='modules_id' value='{$row['modules_id']}'>
                     <input type='submit' class='action_btn action_btn--delete' value='Delete'>
                 </form>

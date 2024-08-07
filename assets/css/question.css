@@ -443,9 +443,8 @@ tr:hover {background-color: #f1dbc3;}
 }
 
 .td-modify {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  width: 100px;
+  text-align: center;
 }
 
 .action_btn {
@@ -954,6 +953,10 @@ i {
 
 .modules-header i {
   color: #fe9e40;
+}
+
+.modules-header h1 {
+  margin-left: 10px;
 }
 
 .heading-modify {

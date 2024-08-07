@@ -4,6 +4,9 @@ include 'includes/DatabaseFunctions.php';
 
 // $count = getCountById($pdo, $count);
 
+$present_user = getMemberInfo($pdo);
+
+
 $mem_id = $_GET['mem_id'] ?? null;
 if (!$mem_id) {
     header("Location: students_show.php");
@@ -31,7 +34,7 @@ $member = $stmt->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/profile.css">
 
-    <link rel="shortcut icon" type="image/x-icon" href="logo/fav.png">
+    <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -75,12 +78,16 @@ $member = $stmt->fetch(PDO::FETCH_ASSOC);
                         <div class="home_navbar-success">
                             <div href="" class="navbar-success-welcome-name">
                                 Hi, <span>
-                                    DevTrek. Admin
+                                    <?php echo htmlspecialchars($present_user['displayname']) ?>
                                 </span>
                             </div>
 
                             <ul class="navbar-success-welcome-menu">
-                                <button class="success-welcome-menu-modify">Edit</button>
+                                <button class="success-welcome-menu-modify">
+                                    <a href="change_profile.php">
+                                        Edit
+                                    </a>
+                                </button>
 
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">

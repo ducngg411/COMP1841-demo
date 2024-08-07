@@ -623,6 +623,11 @@
     color: #33629c;
 }
 
+.modify-authors-name-id:hover {
+    text-decoration: none;
+    color: var(--black-color);
+}
+
 .modify-posting {
     display: flex;
     margin-right: 1rem;
@@ -676,12 +681,27 @@
 }
 
 .content-body-modules-show {
+    display: flex;
+    position: relative;
     padding: 3px;
     border: 1px solid var(--black-color);
     font-size: 1.4rem;
     border-radius: 4px;
     background-color: #dfd2d2;
 }
+
+.content-body-modules-show--view {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 14px 0;
+    border: 1px solid var(--black-color);
+    font-size: 1.4rem;
+    border-radius: 4px;
+    background-color: #dfd2d2;
+
+}
+
 
 .content-body-modules-show:hover {
     cursor: pointer;
@@ -977,6 +997,12 @@
 .non-text {
     text-decoration: none;
     color: var(--black-color);
+}
+
+.non-text-modify {
+    position: absolute;
+    width: 100%;
+
 }
 
 .home__baner-modify {

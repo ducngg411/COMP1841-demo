@@ -5,7 +5,7 @@ include 'includes/DatabaseFunctions.php';
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $stmt = $pdo->prepare("SELECT q.id, q.title, q.content, q.code, q.image, q.image_type, q.created_at, q.edited_at, q.mem_id, m.displayname, m.username, mo.modules_name,
+    $stmt = $pdo->prepare("SELECT q.id, q.title, q.content, q.code, q.image, q.image_type, q.created_at, q.edited_at, q.mem_id, m.displayname, m.username, m.role, mo.modules_name, mo.modules_id,
                             (SELECT COUNT(*) FROM bookmarks b WHERE b.question_id = q.id) AS bookmark_count 
                             FROM questions q
                             JOIN member m ON q.mem_id = m.mem_id
@@ -75,17 +75,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevTrek. Admin Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/profile.css">
     <link rel="stylesheet" href="assets/css/question.css">
-
-    <link rel="shortcut icon" type="image/x-icon" href="logo/fav.png">
+    <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
     <script src="home.js"></script>
     <style>
         .answer-form {
@@ -126,15 +122,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
                             </li>
     
                             <li class="admin-function">
-                                <a href="modules_show.php">Modules</a>
+                                <a href="modules_show_stu.php">Modules</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="">Author</a>
+                                <a href="author_show.php">Author</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="">My Bookmarks</a>
+                                <a href="my_bookmark.php">My Bookmarks</a>
                             </li>
 
                             <li class="admin-function">
@@ -156,7 +152,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
                             </div>
 
                             <ul class="navbar-success-welcome-menu navbar-success-welcome-menu-extend">
-                                <button class="success-welcome-menu-modify">Edit</button>
+                                <button class="success-welcome-menu-modify">
+                                    <a href="change_profile.php">
+                                        Edit
+                                    </a>    
+                                </button>
 
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">
@@ -199,7 +199,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
                                     </h1>
                                 </div>
 
-                                <?php if ($question['mem_id'] == $member['mem_id']) { // Kiểm tra nếu người dùng hiện tại là người tạo câu hỏi ?>
+                                <?php if ($question['mem_id'] == $member['mem_id'] || $member['role'] == 'admin') { // Kiểm tra nếu người dùng hiện tại là người tạo câu hỏi ?>
                                 <div class="extend-option">
                                     <div class="parent-container">
                                         <i class="fa-solid fa-ellipsis"></i>
@@ -223,8 +223,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
 
                             <div class="show-question-info">
                                 <div class="question-modules">
-                                    <div class="content-body-modules-show">
-                                    <?php echo '#' . htmlspecialchars($question['modules_name']) ?>
+                                    <div class="content-body-modules-show content-body-modules-show--view">
+                                        <a class="non-text non-text-modify" href="modules_specific.php?modules_id=<?php echo $question['modules_id']; ?>">
+                                            <?php echo '#' . htmlspecialchars($question['modules_name']) ?>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -292,7 +294,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
                                             <div class="post-layout-content-header">
                                                 <div class="header-modify header-modify-block">
                                                     <div class="modify-authors">
-                                                        <a href="" class="modify-authors-name modify-authors-name-question">
+                                                        <a href="authors_question.php?mem_id=<?php echo htmlspecialchars($question['mem_id']);?>" class="modify-authors-name modify-authors-name-question">
                                                         <?php echo htmlspecialchars($question['displayname']) ?>
                                                         </a> 
                                                     </div> 
@@ -375,7 +377,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
                                                     <div class="post-layout-content-header">
                                                         <div class="header-modify header-modify-block">
                                                             <div class="modify-authors">
-                                                                <a href="" class="modify-authors-name modify-authors-name-question">
+                                                                <a href="authors_question.php?mem_id=<?php echo htmlspecialchars($question['mem_id']);?>" class="modify-authors-name modify-authors-name-question">
                                                                 <?php echo htmlspecialchars($answer['displayname']); ?>
                                                                 </a> 
                                                             </div> 

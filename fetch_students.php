@@ -13,7 +13,7 @@ foreach ($results as $row) {
             <td>{$row['firstname']}</td>
             <td>{$row['lastname']}</td>
             <td>{$row['username']}</td>
-            <td>{$row['displayname']}</td>
+            <td><a href='authors_question.php?mem_id={$row['mem_id']}'>{$row['displayname']}</td>
             <td>{$row['dob']}</td>
             <td>{$row['phone']}</td>
             <td>{$row['email']}</td>

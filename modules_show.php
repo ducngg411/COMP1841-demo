@@ -4,6 +4,7 @@ include 'includes/DatabaseFunctions.php';
 
 
 $count = getModulesById($pdo);
+$member = getMemberInfo($pdo);
 
 ?>
 
@@ -19,7 +20,7 @@ $count = getModulesById($pdo);
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/profile.css">
 
-    <link rel="shortcut icon" type="image/x-icon" href="logo/fav.png">
+    <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -46,11 +47,15 @@ $count = getModulesById($pdo);
                             </li>
     
                             <li class="admin-function">
-                                <a href="">Questions Manage</a>
+                                <a href="question_manage.php">Questions Manage</a>
                             </li>
     
                             <li class="admin-function">
                                 <a href="">Feedback Receive</a>
+                            </li>
+
+                            <li class="admin-function">
+                                <a href="homelogin.php">Switch To User Page</a>
                             </li>
                         </ul>
                     </ul>
@@ -63,12 +68,16 @@ $count = getModulesById($pdo);
                         <div class="home_navbar-success">
                             <div href="" class="navbar-success-welcome-name">
                                 Hi, <span>
-                                    Đức Nguyễn
+                                    <?php echo htmlspecialchars($member['displayname']) ?>
                                 </span>
                             </div>
 
                             <ul class="navbar-success-welcome-menu">
-                                <button class="success-welcome-menu-modify">Edit</button>
+                                <button class="success-welcome-menu-modify">
+                                    <a href="change_profile.php">
+                                        Edit
+                                    </a>
+                                </button>
 
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">

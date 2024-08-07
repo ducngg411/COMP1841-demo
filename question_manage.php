@@ -3,7 +3,7 @@ include 'includes/DatabaseConnection.php';
 include 'includes/DatabaseFunctions.php';
 
 
-$count = getCountById($pdo);
+$count = getCountByQuestionId($pdo);
 $member = getMemberInfo($pdo);
 
 
@@ -94,28 +94,25 @@ $member = getMemberInfo($pdo);
                 </nav>
             </header>
 
-
             <div class="container__content container__content--student-list">
                 <div class="container__h1-button">
-                    <h1 class="student_list_mdf">Student List : <?php echo $count?></h1>
-                    <a href="add_students_ui.php"><button class="add_student">ADD NEW STUDENT</button></a>
+                    <h1 class="student_list_mdf">Question List : <?php echo $count?></h1>
+                    <a href="add_students_ui.php"><button class="add_student">ADD NEW QUESTION</button></a>
                 </div>
                     <table>
                         <thead>
                             <tr>
-                                <th>Member ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Create At</th>
                                 <th>User Name</th>
                                 <th>Display Name</th>
-                                <th>Date of Birth</th>
-                                <th>Phone</th>
-                                <th>Email</th>
+                                <th>Modules</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <?php include 'fetch_students.php'; ?>
+                            <?php include 'fetch_questions_admin.php'; ?>
                         </tbody>
                     </table>    
-            </div>
+                </div>

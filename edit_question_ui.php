@@ -4,7 +4,7 @@ include 'includes/DatabaseFunctions.php';
 
 $member = getMemberInfo($pdo);
 
-$questions = $_GET['id'] ?? null;
+$questions = $_POST['id'] ?? null ;
 if (!$questions) {
     // header("Location: homelogin.php");
     echo 'Id not found!';
@@ -29,7 +29,7 @@ $question = $stmt->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/question.css">
     <link rel="stylesheet" href="assets/css/header.css">
-    <link rel="shortcut icon" type="image/x-icon" href="logo/fav.png">
+    <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <script src="home.js"></script>
@@ -48,17 +48,21 @@ $question = $stmt->fetch(PDO::FETCH_ASSOC);
                             <li class="admin-function">
                                 <a href="homelogin.php">Home Page</a>
                             </li>
+    
                             <li class="admin-function">
-                                <a href="modules_show.php">Modules</a>
+                                <a href="modules_show_stu.php">Modules</a>
                             </li>
+    
                             <li class="admin-function">
-                                <a href="">Author</a>
+                                <a href="author_show.php">Author</a>
                             </li>
+
                             <li class="admin-function">
-                                <a href="">My Bookmarks</a>
+                                <a href="my_bookmark.php">My Bookmarks</a>
                             </li>
+
                             <li class="admin-function">
-                                <a href="">My Questions</a>
+                                <a href="my_question.php">My Questions</a>
                             </li>
                         </ul>
                     </ul>
@@ -74,7 +78,11 @@ $question = $stmt->fetch(PDO::FETCH_ASSOC);
                             </div>
 
                             <ul class="navbar-success-welcome-menu">
-                                <button class="success-welcome-menu-modify">Edit</button>
+                                <button class="success-welcome-menu-modify">
+                                    <a href="change_profile.php">
+                                        Edit
+                                    </a>
+                                </button>
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">
                                     <div class="sign-out-combo">

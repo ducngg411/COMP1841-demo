@@ -11,11 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     deleteQuestion($pdo, $id, $member);
 
     // Chuyển hướng về trang câu hỏi của tôi sau khi xóa
-    header("Location: homelogin.php");
+    header("Location: question_manage.php");
     exit();
 } else {
     $_SESSION['message'] = array("text" => "Invalid request method.", "alert" => "danger");
-    header("Location: homelogin.php");
+    header("Location: question_manage.php");
     exit();
 }
 ?>

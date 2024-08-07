@@ -126,4 +126,37 @@ function getMemberInfo($pdo) {
 
     return $member;
 }
+
+
+function deleteQuestion($pdo, $id, $member) {
+    session_start();
+
+    // Truy vấn để lấy thông tin câu hỏi và người tạo câu hỏi
+    $stmt = $pdo->prepare('SELECT mem_id FROM questions WHERE id = ?');
+    $stmt->execute([$id]);
+    $question = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Kiểm tra nếu người dùng là người tạo câu hỏi hoặc là quản trị viên
+    if ($question && ($question['mem_id'] == $member['mem_id'] || $member['role'] == 'admin')) {
+        try {
+            $sql = "DELETE FROM questions WHERE id = :id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            
+            if ($stmt->execute()) {
+                // Đặt thông báo thành công
+                $_SESSION['message'] = array("text" => "Question successfully deleted.", "alert" => "info");
+            } else {
+                $_SESSION['message'] = array("text" => "Failed to delete the question.", "alert" => "danger");
+            }
+        } catch (PDOException $e) {
+            $_SESSION['message'] = array("text" => "Error: " . $e->getMessage(), "alert" => "danger");
+        }
+    } else {
+        $_SESSION['message'] = array("text" => "You are not authorized to delete this question.", "alert" => "danger");
+    }
+}
 ?>
+
+
+

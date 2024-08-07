@@ -80,7 +80,11 @@ $modules = $stmt->fetch(PDO::FETCH_ASSOC);
                             </div>
 
                             <ul class="navbar-success-welcome-menu">
-                                <button class="success-welcome-menu-modify">Edit</button>
+                                <button class="success-welcome-menu-modify">
+                                    <a href="change_profile.php">
+                                        Edit
+                                    </a>
+                                </button>
 
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">
