@@ -136,6 +136,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
                             <li class="admin-function">
                                 <a href="my_question.php">My Questions</a>
                             </li>
+
+                            <li class="admin-function">
+                                <a href="admin_contact.php">Contact Us</a>
+                            </li>
                         </ul>
                     </ul>
 
@@ -199,26 +203,28 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
                                     </h1>
                                 </div>
 
-                                <?php if ($question['mem_id'] == $member['mem_id'] || $member['role'] == 'admin') { // Kiểm tra nếu người dùng hiện tại là người tạo câu hỏi ?>
-                                <div class="extend-option">
-                                    <div class="parent-container">
-                                        <i class="fa-solid fa-ellipsis"></i>
+                                <?php if ($question['mem_id'] == $member['mem_id'] || $member['role'] == 'admin') { // Kiểm tra nếu người dùng hiện tại là người tạo câu hỏi hoặc là admin ?>
+                                    <div class="extend-option">
+                                        <div class="parent-container">
+                                            <i class="fa-solid fa-ellipsis"></i>
+                                        </div>
+                                    
+                                        <ul class="navbar-success-welcome-menu navbar-success-welcome-menu-extend navbar-success-welcome-menu-extend-questions">
+                                            <?php if ($question['mem_id'] == $member['mem_id']) { // Người dùng là người tạo câu hỏi ?>
+                                                <form action="edit_question_ui.php" method="post">
+                                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                                    <button type="submit" class="action_btn action_btn--edit">Edit</button>
+                                                </form>
+                                            <?php } ?>
+                                            <?php if ($question['mem_id'] == $member['mem_id'] || $member['role'] == 'admin') { // Người dùng là người tạo câu hỏi hoặc admin ?>
+                                                <form action="delete_question.php" method="post">
+                                                    <input type="hidden" name="id" value="<?php echo $id; ?>">
+                                                    <button type="submit" class="action_btn action_btn--delete">Delete</button>
+                                                </form>
+                                            <?php } ?>
+                                        </ul>
                                     </div>
-                                
-                                    <ul class="navbar-success-welcome-menu navbar-success-welcome-menu-extend navbar-success-welcome-menu-extend-questions">
-                                        <form action="delete_question.php" method="post">
-                                            <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                            <button type="submit" class="action_btn action_btn--delete">Delete</button>
-                                        </form>
-
-                                        <form action="edit_question_ui.php" method="post">
-                                            <input type="hidden" name="id" value="<?php echo $id; ?>">
-                                            <button type="submit" class="action_btn action_btn--edit">Edit</button>
-                                        </form>
-                                    </ul>
-                                </div>
                                 <?php } ?>
-
                             </div>
 
                             <div class="show-question-info">

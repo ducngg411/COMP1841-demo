@@ -395,7 +395,7 @@
 
 
 .content-bar-change {
-    margin-right: calc(5%);
+    margin-right: calc(3%);
     padding: 10px 10px;
     border: 1px solid #e4b988;
     border-radius: 3rem;
@@ -627,6 +627,11 @@
     text-decoration: none;
     color: var(--black-color);
 }
+
+.non_visited:visited {
+    color: #00e;
+}
+
 
 .modify-posting {
     display: flex;

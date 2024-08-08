@@ -1,9 +1,8 @@
 <?php 
-
 include 'includes/DatabaseConnection.php';
 include 'includes/DatabaseFunctions.php';
 
-$member = getMemberInfo($pdo)
+$member = getMemberInfo($pdo);
 ?>
 
 <!DOCTYPE html>
@@ -11,24 +10,16 @@ $member = getMemberInfo($pdo)
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Questions</title>
+    <title>Edit Your Question</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/question.css">
-    <!-- <link rel="stylesheet" href="assets/css/profile.css"> -->
     <link rel="stylesheet" href="assets/css/header.css">
-
     <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
     <script src="home.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head> 
 <body>
     <div class="home_page">
@@ -69,14 +60,12 @@ $member = getMemberInfo($pdo)
 
                     <div class="home__navbar-checkin">
                         <div class="home_navbar-success">
-                            <img src="assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);;">
+                            <img src="assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);">
                         </div>
 
                         <div class="home_navbar-success">
                             <div href="" class="navbar-success-welcome-name">
-                                Hi, <span>
-                                <?php echo htmlspecialchars($member['displayname'])?>
-                                </span>
+                                Hi, <span><?php echo htmlspecialchars($member['displayname'])?></span>
                             </div>
 
                             <ul class="navbar-success-welcome-menu">
@@ -85,7 +74,6 @@ $member = getMemberInfo($pdo)
                                         Edit
                                     </a>
                                 </button>
-
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">
                                     <div class="sign-out-combo">
@@ -101,62 +89,53 @@ $member = getMemberInfo($pdo)
 
             <div class="container__content container__content--create-questions">
                 <div class="container-wrap container-wrap--create-questions">
-                    <form action="submit_questions.php" method="post" class="container-wrap-personal container-wrap-personal-question" enctype="multipart/form-data">
+                    <form action="send_mail.php" method="POST" class="container-wrap-personal container-wrap-personal-question" enctype="multipart/form-data">
                         <div class="contact-info-header">
-                            <h1>Add New Questions</h1>
+                            <h1>Contact Us</h1>
                         </div>
 
-                        <div class="contact-info-header">
-                            <h3>Fill the information below to add a new question</h3>
-                        </div>
-
-                        <div class="body-modify body-modify--modules">
-                            <input type="hidden" name="mem_id" value="<?php echo $member['mem_id']; ?>">
-                            <div class="label-change label-change--modules">
-                                <label for="title">Title</label> <br>
+                        <div class="contact-info-header contact-info-header--msg">
+                            <div class="icon_heart">
+                                <i class="fa-solid fa-heart-circle-check"></i>
                             </div>
-                            <input type="text" name="title" placeholder="Title" required>
+                            <h3>We value your feedback and are here to assist you with any inquiries or suggestions. Your input helps us improve and provide better services. Please fill out the form below, and our team will get back to you as soon as possible.</h3>
                         </div>
 
                         <div class="body-modify body-modify--modules">
                             <div class="label-change label-change--modules">
-                                <label for="content">Questions description</label> <br>
+                                <label for="email">Your Email <span style="font-style: italic;">( We will use this mail to respond to you!)</span></label> <br>
                             </div>
-                            <textarea name="content" placeholder="Describe the problem you are having here!" rows="5" required></textarea>
+                            <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($member['email']) ?>">
                         </div>
 
                         <div class="body-modify body-modify--modules">
                             <div class="label-change label-change--modules">
-                                <label for="code">Code</label> <br>
+                                <label for="fullname">Your Name</label> <br>
                             </div>
-                            <textarea name="code" placeholder="If you have code, paste here!" rows="5"></textarea>
+                            <input type="text" id="fullname" name="fullname" value="<?php echo htmlspecialchars($member['displayname']) ?>">
                         </div>
 
                         <div class="body-modify body-modify--modules">
                             <div class="label-change label-change--modules">
-                                <label for="image">Add a image</label> <br>
+                                <label for="title">Title <span style="font-style: italic;">( A short description about your problem)</span></label> <br>
                             </div>
-                            <input type="file" name="image" class="file_modify">
+                            <input type="text" id="title" name="title" required>
                         </div>
 
                         <div class="body-modify body-modify--modules">
                             <div class="label-change label-change--modules">
-                                <label for="modules_id">Select modules</label> <br>
+                                <label for="description">Description <span style="font-style: italic;">( More details about your problem)</span></label> <br>
                             </div>
-                            <select name="modules_id" >
-                                <option value="" required>Choose suitable modules</option>
-                                <?php    
-                                    // Fetch current data
-                                    $sql = "SELECT * FROM modules";
-                                    $stmt = $pdo->prepare($sql); // $pdo là đối tượng kết nối PDO
-                                    $stmt->execute();
-                                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                        echo "<option value='{$row['modules_id']}'>{$row['modules_name']}</option>";
-                                    }
-                                ?>
-                            </select>
+                            <pre><textarea id="description" name="description" rows="5" required></textarea></pre>
                         </div>
-                        
+
+                        <div class="body-modify body-modify--modules">
+                            <div class="label-change label-change--modules">
+                                <label for="attachment">Add an image</label> <br>
+                            </div>
+                            <input type="file" id="attachment" name="attachment" accept="image/*">
+                        </div>
+
                         <div class="container-personal-info">
                             <div class="info-footer-btn">
                                 <div class="button-modify button-modify-border-change button-modify-a">
@@ -164,7 +143,7 @@ $member = getMemberInfo($pdo)
                                 </div>
 
                                 <div class="button-modify button-modify-hover">
-                                    <button type="submit" name="submit">Add Question</button>
+                                    <button type="submit" name="submit_mail">Send Email</button>
                                 </div>
                             </div>
                         </div>

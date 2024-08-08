@@ -59,6 +59,10 @@ $count = getModulesById($pdo);
                             <li class="admin-function">
                                 <a href="my_question.php">My Questions</a>
                             </li>
+
+                            <li class="admin-function">
+                                <a href="admin_contact.php">Contact Us</a>
+                            </li>
                         </ul>
                     </ul>
 

@@ -41,7 +41,7 @@ $question = $stmt->fetch(PDO::FETCH_ASSOC);
                 <nav class="home__navbar">
                     <ul class="home__navbar-list">
                         <li class="home__navbar-list-logo">
-                            <img src="assets/img/admin (4).png" alt="" class="home__navbar-list-logo-img">
+                            <img src="assets/img/devtrek.png" alt="" class="home__navbar-list-logo-img">
                         </li>
 
                         <ul class="home__navbar-funtion">
@@ -63,6 +63,10 @@ $question = $stmt->fetch(PDO::FETCH_ASSOC);
 
                             <li class="admin-function">
                                 <a href="my_question.php">My Questions</a>
+                            </li>
+
+                            <li class="admin-function">
+                                <a href="admin_contact.php">Contact Us</a>
                             </li>
                         </ul>
                     </ul>

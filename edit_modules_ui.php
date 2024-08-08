@@ -2,6 +2,8 @@
 include 'includes/DatabaseConnection.php';
 include 'includes/DatabaseFunctions.php';
 
+
+$member_current = getMemberInfo($pdo);
 // $count = getCountById($pdo, $count);
 
 $modules_id = $_GET['modules_id'] ?? null;
@@ -75,7 +77,7 @@ $modules = $stmt->fetch(PDO::FETCH_ASSOC);
                         <div class="home_navbar-success">
                             <div href="" class="navbar-success-welcome-name">
                                 Hi, <span>
-                                    DevTrek. Admin
+                                <?php echo htmlspecialchars($member_current['displayname'])?>
                                 </span>
                             </div>
 

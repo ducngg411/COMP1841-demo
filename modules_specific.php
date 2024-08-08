@@ -24,7 +24,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$modules]);
 $author_count = $stmt->fetch(PDO::FETCH_ASSOC);
 
-$sql = "SELECT q.id, q.title, q.created_at, q.edited_at, m.displayname,
+$sql = "SELECT q.id, q.title, q.created_at, q.edited_at, m.displayname, m.mem_id,
                 (SELECT COUNT(*) FROM bookmarks b WHERE b.question_id = q.id) AS bookmark_count
                 FROM questions q
                 JOIN member m ON q.mem_id = m.mem_id
@@ -85,6 +85,10 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                             <li class="admin-function">
                                 <a href="my_question.php">My Questions</a>
+                            </li>
+
+                            <li class="admin-function">
+                                <a href="admin_contact.php">Contact Us</a>
                             </li>
                         </ul>
                     </ul>
@@ -150,9 +154,9 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                         <div class="post-layout-content">
                                             <div class="post-layout-content-header">
                                                 <div class="header-modify">
-                                                    <div class="modify-authors">
-                                                        <a href="" class="modify-authors-name">
-                                                        <?php echo htmlspecialchars($question['displayname']); ?>
+                                                    <div class="modify-authors"> 
+                                                        <a href="authors_question.php?mem_id=<?php echo $question['mem_id']; ?>" class="modify-authors-name ">
+                                                            <?php echo htmlspecialchars($question['displayname']); ?>
                                                         </a>
                                                     </div>
 

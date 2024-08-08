@@ -53,7 +53,7 @@ $member = getMemberInfo($pdo);
                             </li>
     
                             <li class="admin-function">
-                                <a href="">Feedback Receive</a>
+                                <a href="https://mail.google.com/mail/u/1/#inbox" target="_blank">Feedback Receive</a>
                             </li>
 
                             <li class="admin-function">

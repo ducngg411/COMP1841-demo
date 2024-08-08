@@ -20,10 +20,7 @@ foreach ($questions as $row) {
                     <input type='hidden' name='id' value='{$row['id']}'>
                     <input type='submit' class='action_btn action_btn--delete' value='Delete'>
                 </form>
-                <form action='edit_question_ui.php' method='post'>
-                    <input type='hidden' name='id' value='{$row['id']}'>
-                    <input type='submit' class='action_btn action_btn--edit' value='Edit'>
-                </form>
+                
             </td>
         </tr>";
 }

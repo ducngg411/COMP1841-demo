@@ -2,8 +2,7 @@
 include 'includes/DatabaseConnection.php';
 include 'includes/DatabaseFunctions.php';
 
-
-$count = getModulesById($pdo);
+$count = getModulesById($pdo); // Giả sử bạn có hàm này để đếm số modules
 $member = getMemberInfo($pdo);
 
 ?>
@@ -15,16 +14,12 @@ $member = getMemberInfo($pdo);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DevTrek. Admin Site</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-    
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/base.css">
     <link rel="stylesheet" href="assets/css/profile.css">
-
     <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
     <script src="home.js"></script>
 </head> 
 <body>
@@ -36,49 +31,24 @@ $member = getMemberInfo($pdo);
                         <li class="home__navbar-list-logo">
                             <img src="assets/img/admin (4).png" alt="" class="home__navbar-list-logo-img">
                         </li>
-
                         <ul class="home__navbar-funtion">
-                            <li class="admin-function">
-                                <a href="students_show.php">Students Manage</a>
-                            </li>
-    
-                            <li class="admin-function">
-                                <a href="modules_show.php">Modules Manage</a>
-                            </li>
-    
-                            <li class="admin-function">
-                                <a href="question_manage.php">Questions Manage</a>
-                            </li>
-    
-                            <li class="admin-function">
-                                <a href="">Feedback Receive</a>
-                            </li>
-
-                            <li class="admin-function">
-                                <a href="homelogin.php">Switch To User Page</a>
-                            </li>
+                            <li class="admin-function"><a href="students_show.php">Students Manage</a></li>
+                            <li class="admin-function"><a href="modules_show.php">Modules Manage</a></li>
+                            <li class="admin-function"><a href="question_manage.php">Questions Manage</a></li>
+                            <li class="admin-function"><a href="">Feedback Receive</a></li>
+                            <li class="admin-function"><a href="homelogin.php">Switch To User Page</a></li>
                         </ul>
                     </ul>
-
                     <div class="home__navbar-checkin">
                         <div class="home_navbar-success">
                             <img src="assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);;">
                         </div>
-
                         <div class="home_navbar-success">
                             <div href="" class="navbar-success-welcome-name">
-                                Hi, <span>
-                                    <?php echo htmlspecialchars($member['displayname']) ?>
-                                </span>
+                                Hi, <span><?php echo htmlspecialchars($member['displayname']) ?></span>
                             </div>
-
                             <ul class="navbar-success-welcome-menu">
-                                <button class="success-welcome-menu-modify">
-                                    <a href="change_profile.php">
-                                        Edit
-                                    </a>
-                                </button>
-
+                                <button class="success-welcome-menu-modify"><a href="change_profile.php">Edit</a></button>
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">
                                     <div class="sign-out-combo">
@@ -92,25 +62,28 @@ $member = getMemberInfo($pdo);
                 </nav>
             </header>
 
-
             <div class="container__content container__content--student-list">
                 <div class="container__h1-button">
                     <h1 class="student_list_mdf">Modules List : <?php echo $count?></h1>
                     <a href="add_modules_ui.php"><button class="add_student">ADD NEW MODULES</button></a>
                 </div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Modules ID</th>
-                                <th>Modules Name</th>
-                                <th>Modules Description</th>
-                                <th>Create Time</th>
-                                <th>Question Count</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php include 'fetch_modules.php'; ?>
-                        </tbody>
-                    </table>    
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Modules ID</th>
+                            <th>Modules Name</th>
+                            <th>Modules Description</th>
+                            <th>Create Time</th>
+                            <th>Question Count</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php include 'fetch_modules.php'; ?>
+                    </tbody>
+                </table>    
             </div>
+        </div>
+    </div>
+</body>
+</html>

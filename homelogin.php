@@ -135,11 +135,19 @@ $member = getMemberInfo($pdo);
                             <a href="my_question.php">MY QUESTIONS</a>
                         </h3>
                     </li>
+
+                    <li class="content-bar-change">
+                        <h3 class="content-bar-authors">
+                            <a href="admin_contact.php">CONTACT US</a>
+                        </h3>
+                    </li>
+                    
                     <li class="content-bar-change">
                         <h3 class="content-bar-authors">
                             <a href="admin_check.php">ADMIN SITE</a>
                         </h3>
                     </li>
+
                 </ul>
                 <div class="home_content-create-post">
                     <a href="create_question.php">
@@ -279,7 +287,7 @@ $member = getMemberInfo($pdo);
                                 <div class="author-container-content">
                                     <div class="container-content-modify">
                                         <div class="content-modify">
-                                            <a href="authors_question.php?mem_id=<?php echo $author['mem_id']; ?>" class="content-modify-name">
+                                            <a href="authors_question.php?mem_id=<?php echo $author['mem_id']; ?>" class="content-modify-name ">
                                                 <?php echo htmlspecialchars($author['displayname']); ?>
                                             </a>
                                         </div>

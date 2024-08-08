@@ -15,7 +15,7 @@ foreach ($questions as $row) {
             <td>{$row['created_at']}</td>
             <td>{$row['modules_name']}</td>
             <td class='td-modify td-modify--modules'>
-                <form action='delete_question.php' method='post' onsubmit='return confirm(\"Are you sure you want to delete this student?\")'>
+                <form action='delete_question.php' method='post' onsubmit='return confirm(\"Are you sure you want to delete this question?\")'>
                     <input type='hidden' name='id' value='{$row['id']}'>
                     <input type='submit' class='action_btn action_btn--delete' value='Delete'>
                 </form>

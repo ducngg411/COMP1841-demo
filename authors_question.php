@@ -73,19 +73,23 @@ $member_id = getMemberInfo($pdo);
                             </li>
     
                             <li class="admin-function">
-                                <a href="modules_show.php">Modules</a>
+                                <a href="modules_show_stu.php">Modules</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="">Author</a>
+                                <a href="author_show.php">Author</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="">My Bookmarks</a>
+                                <a href="my_bookmark.php">My Bookmarks</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="">My Questions</a>
+                                <a href="my_question.php">My Questions</a>
+                            </li>
+
+                            <li class="admin-function">
+                                <a href="admin_contact.php">Contact Us</a>
                             </li>
                         </ul>
                     </ul>
