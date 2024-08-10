@@ -68,27 +68,27 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         <ul class="home__navbar-funtion">
                             <li class="admin-function">
-                                <a href="homelogin.php">Home Page</a>
+                                <a href="homelogin.html.php">Home Page</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="modules_show_stu.php">Modules</a>
+                                <a href="member/views/modules_show_stu.html.php">Modules</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="author_show.php">Author</a>
+                                <a href="member/views/author_show.html.php">Author</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="my_bookmark.php">My Bookmarks</a>
+                                <a href="member/views/my_bookmark.html.php">My Bookmarks</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="my_question.php">My Questions</a>
+                                <a href="member/views/my_question.html.php">My Questions</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="admin_contact.php">Contact Us</a>
+                                <a href="member/views/admin_contact.html.php">Contact Us</a>
                             </li>
                         </ul>
                     </ul>
@@ -116,7 +116,7 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <hr class="sign-out-split">
                                     <div class="sign-out-combo">
                                         <i class="fa-solid fa-right-from-bracket"></i>
-                                        <a href="logout.php" class="welcome-menu-list-text welcome-menu-list-text--sign-out">Sign out</a>
+                                        <a href="auth/logout.php" class="welcome-menu-list-text welcome-menu-list-text--sign-out">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -193,7 +193,7 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="post-layout-content-body">
                                                 <div class="content-body-title">
                                                     <div class="content-body-title-modify">
-                                                        <a class="undercoating" href="view_question.php?id=<?php echo $question['id']; ?>">
+                                                        <a class="undercoating" href="view_question.html.php?id=<?php echo $question['id']; ?>">
                                                             <?php echo htmlspecialchars($question['title']); ?>
                                                         </a>
                                                     </div>

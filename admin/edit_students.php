@@ -1,5 +1,5 @@
 <?php
-include 'includes/DatabaseConnection.php';
+include '../includes/DatabaseConnection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mem_id = $_POST['mem_id'];
@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$firstname, $lastname, $username, $hashed_password, $displayname, $dob, $phone, $email, $mem_id]);
 
-    header("Location: homelogin.html.php?status=updated");
+    header("Location: views/students_show.html.php?status=updated");
     exit();
 }
 ?>

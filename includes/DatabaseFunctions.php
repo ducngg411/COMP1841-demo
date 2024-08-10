@@ -28,7 +28,7 @@ function registerUser($pdo, $data) {
 
             if ($stmt->execute()) {
                 // $_SESSION['message'] = array("text" => "User successfully created.", "alert" => "info");
-                header('Location: students_show.php');
+                header('Location: views/students_show.html.php');
                 exit();
             } else {
                 return "Failed to insert data.";
@@ -89,7 +89,7 @@ function createModules($pdo, $data) {
 
             if ($stmt->execute()) {
                 // $_SESSION['message'] = array("text" => "User successfully created.", "alert" => "info");
-                header('Location: modules_show.php');
+                header('Location: views/modules_show.html.php');
                 exit();
             } else {
                 return "Failed to insert data.";

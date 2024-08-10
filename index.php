@@ -32,10 +32,10 @@
                     </li>
                     
                 </ul>
-                <ul class="header__navbar-register">
+                <!-- <ul class="header__navbar-register">
                     <li class="header__navbar-item">
                         <div class="header__navbar-checkin header__navbar-checkin-pointer">
-                                <a href="registration.php">
+                                <a href="views/registration.php">
                                     <button class="header__navbar-sign-up" >Sign up</button>
                                 </a>
 
@@ -44,13 +44,13 @@
                                 </a>
                         </div>
                     </li>
-                </ul>
+                </ul> -->
             </nav>
         </header>
 
         <div class="container">
 
-            <form class="container__form container--padding" action="login_query.php" method="post">
+            <form class="container__form container--padding" action="auth/login_query.php" method="post">
                 <div class="show_message">
                     <?php if(isset($_SESSION['message'])): ?>
                     <div class="alert"
@@ -114,7 +114,7 @@
                 </div>
                 
                 <div class="container__footer">
-                    <h3 class="container__footer-h3">Don't have an accoount? <span><a href="registration.php">Sign up for free!</a></span></h3>
+                    <h3 class="container__footer-h3">Your success and happiness lies in you!</h3>
                 </div>
             </form>
         </div>

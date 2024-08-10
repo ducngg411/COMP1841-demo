@@ -59,10 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $pdo->prepare("UPDATE questions SET edited_at = NOW() WHERE id = ?");
         $stmt->execute([$id]);
 
-        header('Location: homelogin.php');
+        header('Location: homelogin.html.php');
         exit();
     } catch (Exception $e) {
-        echo "Có lỗi xảy ra khi đăng câu hỏi: " . $e->getMessage();
+        echo "Error updating question! " . $e->getMessage();
     }
 }
 ?>

@@ -9,7 +9,7 @@ if (!isset($_GET['mem_id'])) {
 }
 
 $mem_id = intval($_GET['mem_id']);
-$stmt = $pdo->prepare(" SELECT q.id, q.title, q.content, q.created_at, mo.modules_name,
+$stmt = $pdo->prepare(" SELECT q.id, q.title, q.content, q.created_at, mo.modules_name, mo.modules_id,
                         (SELECT COUNT(*) FROM bookmarks b WHERE b.question_id = q.id) AS bookmark_count
                         FROM questions q
                         JOIN modules mo ON mo.modules_id =  q.modules_id
@@ -69,27 +69,27 @@ $member_id = getMemberInfo($pdo);
 
                         <ul class="home__navbar-funtion">
                             <li class="admin-function">
-                                <a href="homelogin.php">Home Page</a>
+                                <a href="homelogin.html.php">Home Page</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="modules_show_stu.php">Modules</a>
+                                <a href="member/views/modules_show_stu.html.php">Modules</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="author_show.php">Author</a>
+                                <a href="member/views/author_show.html.php">Author</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="my_bookmark.php">My Bookmarks</a>
+                                <a href="member/views/my_bookmark.html.php">My Bookmarks</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="my_question.php">My Questions</a>
+                                <a href="member/views/my_question.html.php">My Questions</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="admin_contact.php">Contact Us</a>
+                                <a href="member/views/admin_contact.html.php">Contact Us</a>
                             </li>
                         </ul>
                     </ul>
@@ -117,7 +117,7 @@ $member_id = getMemberInfo($pdo);
                                     <hr class="sign-out-split">
                                     <div class="sign-out-combo">
                                         <i class="fa-solid fa-right-from-bracket"></i>
-                                        <a href="logout.php" class="welcome-menu-list-text welcome-menu-list-text--sign-out">Sign out</a>
+                                        <a href="auth/logout.php" class="welcome-menu-list-text welcome-menu-list-text--sign-out">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -198,15 +198,17 @@ $member_id = getMemberInfo($pdo);
                                             <div class="post-layout-content-body">
                                                 <div class="content-body-title">
                                                     <div class="content-body-title-modify">
-                                                        <a class="undercoating" href="view_question.php?id=<?php echo $question['id']; ?>">
+                                                        <a class="undercoating" href="view_question.html.php?id=<?php echo $question['id']; ?>">
                                                             <?php echo htmlspecialchars($question['title']); ?>
                                                         </a>
                                                     </div>
                                                 </div>
 
                                                 <div class="content-body-title">
-                                                    <div class="content-body-modules-show">
-                                                        <?php echo '#'.htmlspecialchars($question['modules_name']); ?>
+                                                    <div  class="content-body-modules-show">
+                                                        <a class="non-text" href="modules_specific.php?modules_id=<?php echo $question['modules_id'];?>">
+                                                            <?php echo '#'.htmlspecialchars($question['modules_name']); ?>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>

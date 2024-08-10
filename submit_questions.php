@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute([$modules_id]);
         
         echo "Your question has been posted!";
-        header('Location: homelogin.php');
+        header('Location: homelogin.html.php');
         exit();
     } catch (Exception $e) {
         echo "Có lỗi xảy ra khi đăng câu hỏi: " . $e->getMessage();
