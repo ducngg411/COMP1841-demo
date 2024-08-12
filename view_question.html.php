@@ -230,7 +230,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
                             <div class="show-question-info">
                                 <div class="question-modules">
                                     <div class="content-body-modules-show content-body-modules-show--view">
-                                        <a class="non-text non-text-modify" href="modules_specific.php?modules_id=<?php echo $question['modules_id']; ?>">
+                                        <a class="non-text non-text-modify" href="modules_specific.html.php?modules_id=<?php echo $question['modules_id']; ?>">
                                             <?php echo '#' . htmlspecialchars($question['modules_name']) ?>
                                         </a>
                                     </div>

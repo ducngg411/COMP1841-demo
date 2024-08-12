@@ -215,7 +215,7 @@ $member = getMemberInfo($pdo);
                                             </div>
                                             <div class="content-body-title">
                                                 <div class="content-body-modules-show">
-                                                    <a class="non-text" href="modules_specific.php?modules_id=<?php echo $question['modules_id'];?>">
+                                                    <a class="non-text" href="modules_specific.html.php?modules_id=<?php echo $question['modules_id'];?>">
                                                         <?php echo '#'.htmlspecialchars($question['modules_name']); ?>
                                                     </a>
                                                 </div>

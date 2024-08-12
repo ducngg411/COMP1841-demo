@@ -10,7 +10,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($results as $row) {
     echo "<tr>
             <td>{$row['modules_id']}</td>
-            <td><a href='../../modules_specific.php?modules_id={$row['modules_id']}'>{$row['modules_name']}</td>
+            <td><a href='../../modules_specific.html.php?modules_id={$row['modules_id']}'>{$row['modules_name']}</td>
             <td>{$row['modules_description']}</td>
             <td>{$row['create_time']}</td>
             <td>{$row['questions_count']}</td>
