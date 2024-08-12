@@ -83,7 +83,7 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
                             <ul class="navbar-success-welcome-menu">
                                 <button class="success-welcome-menu-modify">
-                                    <a href="../../change_profile.php">
+                                    <a href="../../change_profile.html.php">
                                         Edit
                                     </a>      
                                 </button>

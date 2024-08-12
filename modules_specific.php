@@ -107,7 +107,7 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                             <ul class="navbar-success-welcome-menu">
                                 <button class="success-welcome-menu-modify">
-                                    <a href="change_profile.php">
+                                    <a href="change_profile.html.php">
                                         Edit
                                     </a>
                                 </button>
@@ -155,7 +155,7 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <div class="post-layout-content-header">
                                                 <div class="header-modify">
                                                     <div class="modify-authors"> 
-                                                        <a href="authors_question.php?mem_id=<?php echo $question['mem_id']; ?>" class="modify-authors-name ">
+                                                        <a href="authors_question.html.php?mem_id=<?php echo $question['mem_id']; ?>" class="modify-authors-name ">
                                                             <?php echo htmlspecialchars($question['displayname']); ?>
                                                         </a>
                                                     </div>

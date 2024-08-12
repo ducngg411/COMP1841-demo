@@ -157,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
 
                             <ul class="navbar-success-welcome-menu navbar-success-welcome-menu-extend">
                                 <button class="success-welcome-menu-modify">
-                                    <a href="change_profile.php">
+                                    <a href="change_profile.html.php">
                                         Edit
                                     </a>    
                                 </button>
@@ -300,7 +300,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
                                             <div class="post-layout-content-header">
                                                 <div class="header-modify header-modify-block">
                                                     <div class="modify-authors">
-                                                        <a href="authors_question.php?mem_id=<?php echo htmlspecialchars($question['mem_id']);?>" class="modify-authors-name modify-authors-name-question">
+                                                        <a href="authors_question.html.php?mem_id=<?php echo htmlspecialchars($question['mem_id']);?>" class="modify-authors-name modify-authors-name-question">
                                                         <?php echo htmlspecialchars($question['displayname']) ?>
                                                         </a> 
                                                     </div> 
@@ -383,7 +383,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['answer'])) {
                                                     <div class="post-layout-content-header">
                                                         <div class="header-modify header-modify-block">
                                                             <div class="modify-authors">
-                                                                <a href="authors_question.php?mem_id=<?php echo htmlspecialchars($question['mem_id']);?>" class="modify-authors-name modify-authors-name-question">
+                                                                <a href="authors_question.html.php?mem_id=<?php echo htmlspecialchars($question['mem_id']);?>" class="modify-authors-name modify-authors-name-question">
                                                                 <?php echo htmlspecialchars($answer['displayname']); ?>
                                                                 </a> 
                                                             </div> 

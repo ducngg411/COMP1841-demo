@@ -46,23 +46,23 @@ $question = $stmt->fetch(PDO::FETCH_ASSOC);
 
                         <ul class="home__navbar-funtion">
                             <li class="admin-function">
-                                <a href="homelogin.php">Home Page</a>
+                                <a href="../../homelogin.html.php">Home Page</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="modules_show_stu.php">Modules</a>
+                                <a href="modules_show_stu.html.php">Modules</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="author_show.php">Author</a>
+                                <a href="author_show.html.php">Author</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="my_bookmark.php">My Bookmarks</a>
+                                <a href="my_bookmark.html.php">My Bookmarks</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="my_question.php">My Questions</a>
+                                <a href="my_question.html.php">My Questions</a>
                             </li>
 
                             <li class="admin-function">
@@ -83,7 +83,7 @@ $question = $stmt->fetch(PDO::FETCH_ASSOC);
 
                             <ul class="navbar-success-welcome-menu">
                                 <button class="success-welcome-menu-modify">
-                                    <a href="../../change_profile.php">
+                                    <a href="../../change_profile.html.php">
                                         Edit
                                     </a>  
                                 </button>

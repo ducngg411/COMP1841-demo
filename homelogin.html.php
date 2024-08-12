@@ -79,7 +79,7 @@ $member = getMemberInfo($pdo);
                             <ul class="navbar-success-welcome-menu">
                                 <li class="success-welcome-menu-list">
                                     <i class="fa-solid fa-user"></i>
-                                    <a href="change_profile.php" class="welcome-menu-list-text">My profile</a>
+                                    <a href="change_profile.html.php" class="welcome-menu-list-text">My profile</a>
                                 </li>
                                 <li class="success-welcome-menu-list">
                                     <i class="fa-solid fa-bookmark"></i>
@@ -112,7 +112,7 @@ $member = getMemberInfo($pdo);
                 <ul class="content-bar-container">
                     <li class="content-bar-change">
                         <h3 class="content-bar-change-profile">
-                            <a href="change_profile.php">PROFILE CHANGE</a>
+                            <a href="change_profile.html.php">PROFILE CHANGE</a>
                         </h3>
                     </li>
                     <li class="content-bar-change">
@@ -180,7 +180,7 @@ $member = getMemberInfo($pdo);
                                         <div class="post-layout-content-header">
                                             <div class="header-modify">
                                                 <div class="modify-authors">
-                                                    <a href="authors_question.php?mem_id=<?php echo $question['mem_id']; ?>" class="modify-authors-name">
+                                                    <a href="authors_question.html.php?mem_id=<?php echo $question['mem_id']; ?>" class="modify-authors-name">
                                                         <?php echo htmlspecialchars($question['displayname']); ?>
                                                     </a>
                                                 </div>
@@ -263,7 +263,7 @@ $member = getMemberInfo($pdo);
                                     <div class="top-content-author">
                                         <div class="content-author-name">
                                             <div class="author-name-modify">
-                                                <a href="authors_question.php?mem_id=<?php echo $question['mem_id']; ?>" class="name-modify">
+                                                <a href="authors_question.html.php?mem_id=<?php echo $question['mem_id']; ?>" class="name-modify">
                                                     <?php echo htmlspecialchars($question['displayname']); ?>
                                                 </a>
                                             </div>
@@ -287,7 +287,7 @@ $member = getMemberInfo($pdo);
                                 <div class="author-container-content">
                                     <div class="container-content-modify">
                                         <div class="content-modify">
-                                            <a href="authors_question.php?mem_id=<?php echo $author['mem_id']; ?>" class="content-modify-name ">
+                                            <a href="authors_question.html.php?mem_id=<?php echo $author['mem_id']; ?>" class="content-modify-name ">
                                                 <?php echo htmlspecialchars($author['displayname']); ?>
                                             </a>
                                         </div>

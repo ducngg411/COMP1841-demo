@@ -48,7 +48,7 @@ $member = getMemberInfo($pdo);
                                 Hi, <span><?php echo htmlspecialchars($member['displayname']) ?></span>
                             </div>
                             <ul class="navbar-success-welcome-menu">
-                                <button class="success-welcome-menu-modify"><a href="../../change_profile.php">Edit</a></button>
+                                <button class="success-welcome-menu-modify"><a href="../../change_profile.html.php">Edit</a></button>
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">
                                     <div class="sign-out-combo">

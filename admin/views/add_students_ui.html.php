@@ -74,7 +74,7 @@ $member = getMemberInfo($pdo);
 
                             <ul class="navbar-success-welcome-menu">
                                 <button class="success-welcome-menu-modify">
-                                    <a href="../../change_profile.php">
+                                    <a href="../../change_profile.html.php">
                                         Edit
                                     </a>
                                 </button>
@@ -97,11 +97,11 @@ $member = getMemberInfo($pdo);
                 <div class="container-wrap">
                     <form action="../add_students.php" method="post" class="container-wrap-personal" >
                         <div class="contact-info-header">
-                            <h1>Contact Info</h1>
+                            <h1>Add Students</h1>
                         </div>
 
                         <div class="contact-info-header">
-                            <h3>Manage your contact information</h3>
+                            <h3>Fill the form to create new student</h3>
                         </div>
 
                         <div class="contact-info-body">
