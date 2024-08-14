@@ -12,7 +12,7 @@ foreach ($bookmarks as $row) {
     echo "<tr>
             <td>{$row['id']}</td>
             <td>{$row['question_id']}</td>
-            <td><a href='../../view_question.html.php?id={$row['question_id']}'>{$row['title']}</a></td>
+            <td><a href='../../templates/view_question.html.php?id={$row['question_id']}'>{$row['title']}</a></td>
             <td>{$row['created_at']}</td>
             <td class='td-modify td-modify--modules'>
                 <form action='../delete_bookmark.php' method='post' onsubmit='return confirm(\"Are you sure you want to delete this bookmark?\")'>

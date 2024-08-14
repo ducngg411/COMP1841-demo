@@ -44,7 +44,7 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
                         <ul class="home__navbar-funtion">
                             <li class="admin-function">
-                                <a href="../../homelogin.html.php">Home Page</a>
+                                <a href="../../templates/homelogin.html.php">Home Page</a>
                             </li>
     
                             <li class="admin-function">
@@ -83,7 +83,7 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
                             <ul class="navbar-success-welcome-menu">
                                 <button class="success-welcome-menu-modify">
-                                    <a href="../../change_profile.html.php">
+                                    <a href="../../templates/change_profile.html.php">
                                         Edit
                                     </a>      
                                 </button>
@@ -104,7 +104,7 @@ $result = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="container__content">
                 <div class="container__h1-button container__h1-button-question">
                     <h1 class="student_list_mdf student_list_mdf--question">My Question List: <?php echo $result['count']?></h1>
-                    <a href="../../create_question.html.php"><button class="add_student add_student-question">ADD NEW QUESTION</button></a>
+                    <a href="../../templates/create_question.html.php"><button class="add_student add_student-question">ADD NEW QUESTION</button></a>
                 </div>
 
                 <div class="table-modify">

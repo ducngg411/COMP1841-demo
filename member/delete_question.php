@@ -2,7 +2,7 @@
 include '../includes/DatabaseConnection.php';
 include '../includes/DatabaseFunctions.php';
 
-session_start(); // Đảm bảo session được bắt đầu để lưu thông báo
+session_start(); 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $id = $_POST['id'];
@@ -10,12 +10,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     deleteQuestion($pdo, $id, $member);
 
-    // Chuyển hướng về trang câu hỏi của tôi sau khi xóa
-    header("Location: ../homelogin.html.php");
+
+    header("Location: ../templates/homelogin.html.php");
     exit();
 } else {
     $_SESSION['message'] = array("text" => "Invalid request method.", "alert" => "danger");
-    header("Location: ../homelogin.html.php");
+    header("Location: ../templates/homelogin.html.php");
     exit();
 }
 ?>

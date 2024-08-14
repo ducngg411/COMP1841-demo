@@ -68,7 +68,7 @@ $modules = $stmt->fetch(PDO::FETCH_ASSOC);
                             </li>
 
                             <li class="admin-function">
-                                <a href="../../homelogin.html.php">Switch To User Page</a>
+                                <a href="../../templates/homelogin.html.php">Switch To User Page</a>
                             </li>
                         </ul>
                     </ul>
@@ -87,7 +87,7 @@ $modules = $stmt->fetch(PDO::FETCH_ASSOC);
 
                             <ul class="navbar-success-welcome-menu">
                                 <button class="success-welcome-menu-modify">
-                                    <a href="../../change_profile.html.php">
+                                    <a href="../../templates/change_profile.html.php">
                                         Edit
                                     </a>
                                 </button>

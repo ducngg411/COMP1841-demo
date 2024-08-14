@@ -2,7 +2,7 @@
 include '../../includes/DatabaseConnection.php';
 include '../../includes/DatabaseFunctions.php';
 
-$count = getModulesById($pdo); // Giả sử bạn có hàm này để đếm số modules
+$count = getModulesById($pdo); 
 $member = getMemberInfo($pdo);
 
 ?>
@@ -35,8 +35,8 @@ $member = getMemberInfo($pdo);
                             <li class="admin-function"><a href="students_show.html.php">Students Manage</a></li>
                             <li class="admin-function"><a href="modules_show.html.php">Modules Manage</a></li>
                             <li class="admin-function"><a href="question_manage.html.php">Questions Manage</a></li>
-                            <li class="admin-function"><a href="">Feedback Receive</a></li>
-                            <li class="admin-function"><a href="homelogin.html.php">Switch To User Page</a></li>
+                            <li class="admin-function"><a href="https://mail.google.com/mail/u/1/#inbox" target="_blank">Feedback Receive</a></li>
+                            <li class="admin-function"><a href="../../templates/homelogin.html.php">Switch To User Page</a></li>
                         </ul>
                     </ul>
                     <div class="home__navbar-checkin">
@@ -48,7 +48,7 @@ $member = getMemberInfo($pdo);
                                 Hi, <span><?php echo htmlspecialchars($member['displayname']) ?></span>
                             </div>
                             <ul class="navbar-success-welcome-menu">
-                                <button class="success-welcome-menu-modify"><a href="../../change_profile.html.php">Edit</a></button>
+                                <button class="success-welcome-menu-modify"><a href="../../templates/change_profile.html.php">Edit</a></button>
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">
                                     <div class="sign-out-combo">

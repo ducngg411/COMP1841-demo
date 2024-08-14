@@ -1,40 +1,8 @@
-<?php 
-
-include_once 'includes/DatabaseConnection.php';
-include_once 'includes/DatabaseFunctions.php';
-
-$mem_id = getMemberInfo($pdo);
-$modules = $_GET['modules_id'] ?? null;
-if (!$modules) {
-    echo 'Id not found!';
-    exit();
-}
-
-$sql = "SELECT mo.modules_name, mo.modules_description, mo.questions_count 
-                FROM modules mo
-                WHERE mo.modules_id = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$modules]);
-$module = $stmt->fetch(PDO::FETCH_ASSOC);
-
-$sql = "SELECT COUNT(DISTINCT q.mem_id) AS author_count
-                FROM questions q
-                WHERE q.modules_id = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$modules]);
-$author_count = $stmt->fetch(PDO::FETCH_ASSOC);
-
-$sql = "SELECT q.id, q.title, q.created_at, q.edited_at, m.displayname, m.mem_id,
-                (SELECT COUNT(*) FROM bookmarks b WHERE b.question_id = q.id) AS bookmark_count
-                FROM questions q
-                JOIN member m ON q.mem_id = m.mem_id
-                WHERE q.modules_id = ?
-                ORDER BY q.created_at DESC LIMIT 20";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$modules]);
-$questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+<?php
+include '../authors_info.php'
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -44,12 +12,12 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Home Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     
-    <link rel="stylesheet" href="assets/css/home.css">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/question.css">
-    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/question.css">
+    <link rel="stylesheet" href="../assets/css/header.css">
 
-    <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
+    <link rel="shortcut icon" type="image/x-icon" href="logo/fav.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -63,7 +31,7 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <nav class="home__navbar">
                     <ul class="home__navbar-list">
                         <li class="home__navbar-list-logo">
-                            <img src="assets/img/devtrek.png" alt="" class="home__navbar-list-logo-img">
+                            <img src="../assets/img/devtrek.png" alt="" class="home__navbar-list-logo-img">
                         </li>
 
                         <ul class="home__navbar-funtion">
@@ -72,36 +40,36 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             </li>
     
                             <li class="admin-function">
-                                <a href="member/views/modules_show_stu.html.php">Modules</a>
+                                <a href="../member/views/modules_show_stu.html.php">Modules</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="member/views/author_show.html.php">Author</a>
+                                <a href="../member/views/author_show.html.php">Author</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="member/views/my_bookmark.html.php">My Bookmarks</a>
+                                <a href="../member/views/my_bookmark.html.php">My Bookmarks</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="member/views/my_question.html.php">My Questions</a>
+                                <a href="../member/views/my_question.html.php">My Questions</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="member/views/admin_contact.html.php">Contact Us</a>
+                                <a href="../member/views/admin_contact.html.php">Contact Us</a>
                             </li>
                         </ul>
                     </ul>
 
                     <div class="home__navbar-checkin">
                         <div class="home_navbar-success">
-                            <img src="assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);;">
+                            <img src="../assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);;">
                         </div>
 
                         <div class="home_navbar-success">
                             <div href="" class="navbar-success-welcome-name">
                                 Hi, <span>
-                                <?php echo htmlspecialchars($mem_id['displayname'])?>
+                                <?php echo htmlspecialchars($member_id['displayname'])?>
                                 </span>
                             </div>
 
@@ -128,13 +96,17 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="main-content">
                 <div class="container-modules">
                     <div class="modules-header">
-                        <i class="fa-solid fa-hashtag"></i>
-                        <h1 class="heading-modify"><?php echo htmlspecialchars($module['modules_name']); ?></h1>
+                        <div class="post-layout-avt">
+                            <img src="../assets/img/avttest.jpg" alt="" class="post-layout-avt-modify">
+                        </div>
+                        <div class="combine">
+                            <h1 class="heading-modify heading-modify--margin"><?php echo htmlspecialchars($member['displayname']); ?></h1>
+                            <div class="modules-description">
+                                <h3 class="description-modify description-modify-padding"><?php echo htmlspecialchars('@'. $member['username']); ?></h3>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="modules-description">
-                        <h3 class="description-modify"><?php echo htmlspecialchars($module['modules_description']); ?></h3>
-                    </div>
 
                     <div class="modules-body">
                         <div class="modules-body-questions">
@@ -148,15 +120,15 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="post-layout">
                                     <div class="post-layout-container">
                                         <div class="post-layout-avt post-layout-avt-width">
-                                            <img src="assets/img/avttest.jpg" alt="" class="post-layout-avt-modify">
+                                            <img src="../assets/img/avttest.jpg" alt="" class="post-layout-avt-modify">
                                         </div>
 
                                         <div class="post-layout-content">
                                             <div class="post-layout-content-header">
                                                 <div class="header-modify">
-                                                    <div class="modify-authors"> 
-                                                        <a href="authors_question.html.php?mem_id=<?php echo $question['mem_id']; ?>" class="modify-authors-name ">
-                                                            <?php echo htmlspecialchars($question['displayname']); ?>
+                                                    <div class="modify-authors">
+                                                        <a href="" class="modify-authors-name">
+                                                        <?php echo htmlspecialchars($member['displayname']); ?>
                                                         </a>
                                                     </div>
 
@@ -200,8 +172,10 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 </div>
 
                                                 <div class="content-body-title">
-                                                    <div class="content-body-modules-show">
-                                                        <?php echo '#'.htmlspecialchars($module['modules_name']); ?>
+                                                    <div  class="content-body-modules-show">
+                                                        <a class="non-text" href="modules_specific.html.php?modules_id=<?php echo $question['modules_id'];?>">
+                                                            <?php echo '#'.htmlspecialchars($question['modules_name']); ?>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -239,21 +213,21 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         <div class="modules-body-count">
                             <div class="body-count-header">
-                                <h1 class="heading-modify"><?php echo htmlspecialchars($module['modules_name']); ?></h1>
+                                <h1 class="heading-modify">STATICS</h1>
                                 <hr class="hr-backup-rule">
                             </div>
 
                             <div class="body-count-box">
                                 <div class="count-box">
-                                    <h1 class="heading-modify"><?php echo htmlspecialchars($module['questions_count']); ?></h1>
-                                    <h2>Questions</h2>
+                                    <h1 class="heading-modify"><?php echo htmlspecialchars($member['question_count']); ?></h1>
+                                    <h2>Total Questions</h2>
                                 </div>
                                 
                                 <hr class="hr-split-rule">
 
                                 <div class="count-box">
-                                    <h1><?php echo htmlspecialchars($author_count['author_count']); ?></h1>
-                                    <h2>Authors</h2>
+                                    <h1><?php echo htmlspecialchars($student_bookmark['bookmark_count']); ?></h1>
+                                    <h2>Total Bookmarks</h2>
                                 </div>
                             </div>
 

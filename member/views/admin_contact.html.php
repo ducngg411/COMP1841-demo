@@ -33,7 +33,7 @@ $member = getMemberInfo($pdo);
 
                         <ul class="home__navbar-funtion">
                             <li class="admin-function">
-                                <a href="../../homelogin.html.php">Home Page</a>
+                                <a href="../../templates/homelogin.html.php">Home Page</a>
                             </li>
     
                             <li class="admin-function">
@@ -70,7 +70,7 @@ $member = getMemberInfo($pdo);
 
                             <ul class="navbar-success-welcome-menu">
                                 <button class="success-welcome-menu-modify">
-                                    <a href="../../change_profile.html.php">
+                                    <a href="../../templates/change_profile.html.php">
                                         Edit
                                     </a>
                                 </button>

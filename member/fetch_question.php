@@ -11,7 +11,7 @@ $questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 foreach ($questions as $row) {
     echo "<tr>
             <td>{$row['id']}</td>
-            <td><a href='../../view_question.html.php?id={$row['id']}'>{$row['title']}</a></td>
+            <td><a href='../../templates/view_question.html.php?id={$row['id']}'>{$row['title']}</a></td>
             <td>{$row['created_at']}</td>
             <td>{$row['modules_name']}</td>
             <td class='td-modify td-modify--modules'>

@@ -57,7 +57,7 @@ $member = getMemberInfo($pdo);
                             </li>
 
                             <li class="admin-function">
-                                <a href="../../homelogin.html.php">Switch To User Page</a>
+                                <a href="../../templates/homelogin.html.php">Switch To User Page</a>
                             </li>
                         </ul>
                     </ul>
@@ -76,7 +76,7 @@ $member = getMemberInfo($pdo);
 
                             <ul class="navbar-success-welcome-menu">
                                 <button class="success-welcome-menu-modify">
-                                    <a href="../../change_profile.html.php">
+                                    <a href="../../templates/change_profile.html.php">
                                         Edit
                                     </a>
                                 </button>
@@ -97,7 +97,7 @@ $member = getMemberInfo($pdo);
             <div class="container__content container__content--student-list">
                 <div class="container__h1-button">
                     <h1 class="student_list_mdf">Question List : <?php echo $count?></h1>
-                    <a href="../../create_question.html.php"><button class="add_student">ADD NEW QUESTION</button></a>
+                    <a href="../../templates/create_question.html.php"><button class="add_student">ADD NEW QUESTION</button></a>
                 </div>
                     <table>
                         <thead>

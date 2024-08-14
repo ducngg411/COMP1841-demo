@@ -1,19 +1,5 @@
 <?php
-include 'includes/DatabaseConnection.php';
-include 'includes/DatabaseFunctions.php';
-
-$mem_id = getMemberInfo($pdo)['mem_id'];
-
-// Fetch current data
-$sql = "SELECT * FROM member WHERE mem_id = ?";
-$stmt = $pdo->prepare($sql);
-$stmt->execute([$mem_id]);
-$member = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if (!$member) {
-    echo "Member not found!";
-    exit();
-}
+include '../profile_control.php';
 ?>
 
 <!DOCTYPE html>
@@ -24,11 +10,11 @@ if (!$member) {
     <title>Your Profile</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     
-    <link rel="stylesheet" href="assets/css/home.css">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/profile.css">
 
-    <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/favicon (2).ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -42,7 +28,7 @@ if (!$member) {
                 <nav class="home__navbar">
                     <ul class="home__navbar-list">
                         <li class="home__navbar-list-logo">
-                            <img src="assets/img/devtrek.png" alt="" class="home__navbar-list-logo-img">
+                            <img src="../assets/img/devtrek.png" alt="" class="home__navbar-list-logo-img">
                         </li>
 
                         <ul class="home__navbar-funtion">
@@ -51,30 +37,30 @@ if (!$member) {
                             </li>
     
                             <li class="admin-function">
-                                <a href="member/views/modules_show_stu.html.php">Modules</a>
+                                <a href="../member/views/modules_show_stu.html.php">Modules</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="member/views/author_show.html.php">Author</a>
+                                <a href="../member/views/author_show.html.php">Author</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="member/views/my_bookmark.html.php">My Bookmarks</a>
+                                <a href="../member/views/my_bookmark.html.php">My Bookmarks</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="member/views/my_question.html.php">My Questions</a>
+                                <a href="../member/views/my_question.html.php">My Questions</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="member/views/admin_contact.html.php">Contact Us</a>
+                                <a href="../member/views/admin_contact.html.php">Contact Us</a>
                             </li>
                         </ul>
                     </ul>
 
                     <div class="home__navbar-checkin">
                         <div class="home_navbar-success">
-                            <img src="assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);;">
+                            <img src="../assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);;">
                         </div>
 
                         <div class="home_navbar-success">
@@ -188,7 +174,7 @@ if (!$member) {
                         <div class="container-personal-info">
                             <div class="info-footer-btn">
                                 <div class="button-modify button-modify-border-change">
-                                    <a href="homelogin.php">
+                                    <a href="homelogin.html.php">
                                         <button name="cancel">Cancel</button>
                                     </a>
                                 </div>

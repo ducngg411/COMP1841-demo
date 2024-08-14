@@ -1,7 +1,7 @@
 <?php 
 
-include 'includes/DatabaseConnection.php';
-include 'includes/DatabaseFunctions.php';
+include '../includes/DatabaseConnection.php';
+include '../includes/DatabaseFunctions.php';
 
 $member = getMemberInfo($pdo)
 ?>
@@ -14,13 +14,13 @@ $member = getMemberInfo($pdo)
     <title>Add Questions</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     
-    <link rel="stylesheet" href="assets/css/home.css">
-    <link rel="stylesheet" href="assets/css/base.css">
-    <link rel="stylesheet" href="assets/css/question.css">
-    <!-- <link rel="stylesheet" href="assets/css/profile.css"> -->
-    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/question.css">
+    <!-- <link rel="stylesheet" href="../assets/css/profile.css"> -->
+    <link rel="stylesheet" href="../assets/css/header.css">
 
-    <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/favicon (2).ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -37,7 +37,7 @@ $member = getMemberInfo($pdo)
                 <nav class="home__navbar">
                     <ul class="home__navbar-list">
                         <li class="home__navbar-list-logo">
-                            <img src="assets/img/devtrek.png" alt="" class="home__navbar-list-logo-img">
+                            <img src="../assets/img/devtrek.png" alt="" class="home__navbar-list-logo-img">
                         </li>
 
                         <ul class="home__navbar-funtion">
@@ -46,30 +46,30 @@ $member = getMemberInfo($pdo)
                             </li>
     
                             <li class="admin-function">
-                                <a href="member/views/modules_show_stu.html.php">Modules</a>
+                                <a href="../member/views/modules_show_stu.html.php">Modules</a>
                             </li>
     
                             <li class="admin-function">
-                                <a href="member/views/author_show.html.php">Author</a>
+                                <a href="../member/views/author_show.html.php">Author</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="member/views/my_bookmark.html.php">My Bookmarks</a>
+                                <a href="../member/views/my_bookmark.html.php">My Bookmarks</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="member/views/my_question.html.php">My Questions</a>
+                                <a href="../member/views/my_question.html.php">My Questions</a>
                             </li>
 
                             <li class="admin-function">
-                                <a href="member/views/admin_contact.html.php">Contact Us</a>
+                                <a href="../member/views/admin_contact.html.php">Contact Us</a>
                             </li>
                         </ul>
                     </ul>
 
                     <div class="home__navbar-checkin">
                         <div class="home_navbar-success">
-                            <img src="assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);;">
+                            <img src="../assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);;">
                         </div>
 
                         <div class="home_navbar-success">
@@ -101,7 +101,7 @@ $member = getMemberInfo($pdo)
 
             <div class="container__content container__content--create-questions">
                 <div class="container-wrap container-wrap--create-questions">
-                    <form action="submit_questions.php" method="post" class="container-wrap-personal container-wrap-personal-question" enctype="multipart/form-data">
+                    <form action="../submit_questions.php" method="post" class="container-wrap-personal container-wrap-personal-question" enctype="multipart/form-data">
                         <div class="contact-info-header">
                             <h1>Add New Questions</h1>
                         </div>

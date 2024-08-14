@@ -32,18 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     try {
-        // Thực hiện chèn câu hỏi mới vào bảng questions
+        // Insert new questions into 'questions' table 
         $stmt->execute();
         
-        // Tăng question_count trong bảng modules
+        // Increment question count in modules table
         $stmt = $pdo->prepare("UPDATE modules SET questions_count = questions_count + 1 WHERE modules_id = ?");
         $stmt->execute([$modules_id]);
         
         echo "Your question has been posted!";
-        header('Location: homelogin.html.php');
+        header('Location: templates/homelogin.html.php');
         exit();
     } catch (Exception $e) {
-        echo "Có lỗi xảy ra khi đăng câu hỏi: " . $e->getMessage();
+        echo "An error occurred while posting a question: " . $e->getMessage();
     }
 }
 ?>

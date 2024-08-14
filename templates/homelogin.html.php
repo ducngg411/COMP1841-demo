@@ -1,35 +1,9 @@
-<?php 
+<?php
 
-include 'includes/DatabaseConnection.php';
-include 'includes/DatabaseFunctions.php';
+include '../home_controller.php' 
 
-$stmt = $pdo->query("SELECT q.id, q.title, q.created_at, q.edited_at, m.displayname, m.mem_id, mo.modules_name, mo.modules_id,
-                    (SELECT COUNT(*) FROM bookmarks b WHERE b.question_id = q.id) AS bookmark_count
-                    FROM questions q
-                    JOIN member m ON q.mem_id = m.mem_id
-                    JOIN modules mo ON q.modules_id = mo.modules_id
-                    ORDER BY q.created_at DESC LIMIT 20");
-$questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$stmt = $pdo->query("SELECT q.id, q.title, q.created_at, q.edited_at, m.displayname, m.mem_id, mo.modules_name, mo.modules_id,
-                    (SELECT COUNT(*) FROM bookmarks b WHERE b.question_id = q.id) AS bookmark_count
-                    FROM questions q
-                    JOIN member m ON q.mem_id = m.mem_id
-                    JOIN modules mo ON q.modules_id = mo.modules_id
-                    ORDER BY q.created_at DESC LIMIT 5");
-$newest_questions = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-
-$stmt = $pdo->query(" SELECT m.mem_id, m.displayname, m.username, COUNT(q.id) AS question_count
-                    FROM member m
-                    JOIN questions q ON m.mem_id = q.mem_id
-                    GROUP BY m.mem_id
-                    ORDER BY question_count DESC
-                    LIMIT 5");
-$top_authors = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-$member = getMemberInfo($pdo);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,10 +13,10 @@ $member = getMemberInfo($pdo);
     <title>Home Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
     
-    <link rel="stylesheet" href="assets/css/home.css">
-    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <link rel="stylesheet" href="../assets/css/base.css">
 
-    <link rel="shortcut icon" href="assets/img/favicon (2).ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../assets/img/favicon (2).ico" type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -65,12 +39,12 @@ $member = getMemberInfo($pdo);
                 <nav class="home__navbar">
                     <ul class="home__navbar-list">
                         <li class="home__navbar-list-logo">
-                            <img src="assets/img/devtrek.png" alt="" class="home__navbar-list-logo-img">
+                            <img src="../assets/img/devtrek.png" alt="" class="home__navbar-list-logo-img">
                         </li>
                     </ul>
                     <div class="home__navbar-checkin">
                         <div class="home_navbar-success">
-                            <img src="assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);;">
+                            <img src="../assets/img/avttest.jpg" alt="avt" width="50px" height="50px" style="border-radius: 50px; border: 1px solid rgb(238, 225, 225);;">
                         </div>
                         <div class="home_navbar-success">
                             <div href="" class="navbar-success-welcome-name">
@@ -83,17 +57,17 @@ $member = getMemberInfo($pdo);
                                 </li>
                                 <li class="success-welcome-menu-list">
                                     <i class="fa-solid fa-bookmark"></i>
-                                    <a href="member/views/my_bookmark.html.php" class="welcome-menu-list-text">My bookmark</a>
+                                    <a href="../member/views/my_bookmark.html.php" class="welcome-menu-list-text">My bookmark</a>
                                 </li>
                                 <li class="success-welcome-menu-list">
                                     <i class="fa-solid fa-file-lines"></i>
-                                    <a href="member/views/my_question.html.php" class="welcome-menu-list-text">My questions</a>
+                                    <a href="../member/views/my_question.html.php" class="welcome-menu-list-text">My questions</a>
                                 </li>
                                 <li class="success-welcome-menu-list success-welcome-menu-list--sign-out">
                                     <hr class="sign-out-split">
                                     <div class="sign-out-combo">
                                         <i class="fa-solid fa-right-from-bracket"></i>
-                                        <a href="auth/logout.php" class="welcome-menu-list-text welcome-menu-list-text--sign-out">Sign out</a>
+                                        <a href="../auth/logout.php" class="welcome-menu-list-text welcome-menu-list-text--sign-out">Sign out</a>
                                     </div>
                                 </li>
                             </ul>
@@ -104,7 +78,7 @@ $member = getMemberInfo($pdo);
 
             <div class="home_banner">
                 <div class="home_banner-setting"> 
-                    <img src="assets/img/Untitled design (1).png" alt="banner" class="home__baner-modify">
+                    <img src="../assets/img/Untitled design (1).png" alt="banner" class="home__baner-modify">
                 </div>
             </div>
 
@@ -117,34 +91,34 @@ $member = getMemberInfo($pdo);
                     </li>
                     <li class="content-bar-change">
                         <h3 class="content-bar-modules">
-                            <a href="member/views/modules_show_stu.html.php">MODULES</a>    
+                            <a href="../member/views/modules_show_stu.html.php">MODULES</a>    
                         </h3>
                     </li>
                     <li class="content-bar-change">
                         <h3 class="content-bar-authors">
-                            <a href="member/views/author_show.html.php">AUTHORS</a>    
+                            <a href="../member/views/author_show.html.php">AUTHORS</a>    
                         </h3>
                     </li>
                     <li class="content-bar-change">
                         <h3 class="content-bar-authors">
-                            <a href="member/views/my_bookmark.html.php">MY BOOKMARKS</a>    
+                            <a href="../member/views/my_bookmark.html.php">MY BOOKMARKS</a>    
                         </h3>
                     </li>
                     <li class="content-bar-change">
                         <h3 class="content-bar-authors">
-                            <a href="member/views/my_question.html.php">MY QUESTIONS</a>
+                            <a href="../member/views/my_question.html.php">MY QUESTIONS</a>
                         </h3>
                     </li>
 
                     <li class="content-bar-change">
                         <h3 class="content-bar-authors">
-                            <a href="member/views/admin_contact.html.php">CONTACT US</a>
+                            <a href="../member/views/admin_contact.html.php">CONTACT US</a>
                         </h3>
                     </li>
                     
                     <li class="content-bar-change">
                         <h3 class="content-bar-authors">
-                            <a href="auth/admin_check.php">ADMIN SITE</a>
+                            <a href="../auth/admin_check.php">ADMIN SITE</a>
                         </h3>
                     </li>
 
@@ -153,7 +127,7 @@ $member = getMemberInfo($pdo);
                     <a href="create_question.html.php">
                         <div class="content-create-post">
                             <i class="fa-solid fa-plus create-post-icon"></i>
-                            <div href="create_question.html.php" class="create-post-button">CREATE POST</div>
+                            <div href="../create_question.html.php" class="create-post-button">CREATE POST</div>
                         </div>
                     </a>
                 </div>
@@ -174,7 +148,7 @@ $member = getMemberInfo($pdo);
                             <div class="post-layout">
                                 <div class="post-layout-container">
                                     <div class="post-layout-avt">
-                                        <img src="assets/img/avttest.jpg" alt="" class="post-layout-avt-modify">
+                                        <img src="../assets/img/avttest.jpg" alt="" class="post-layout-avt-modify">
                                     </div>
                                     <div class="post-layout-content">
                                         <div class="post-layout-content-header">
@@ -282,7 +256,7 @@ $member = getMemberInfo($pdo);
                             <?php foreach ($top_authors as $author): ?>
                             <div class="author-container-avt-split">
                                 <div class="author-container-avt">
-                                    <img src="assets/img/Blue Red Colorful Good Job Student Stickers (2).png" alt="avt-author" class="container-avt-modify">
+                                    <img src="../assets/img/Blue Red Colorful Good Job Student Stickers (2).png" alt="avt-author" class="container-avt-modify">
                                 </div>
                                 <div class="author-container-content">
                                     <div class="container-content-modify">
@@ -322,17 +296,17 @@ $member = getMemberInfo($pdo);
                         </div>
                         <div class="container-resources-body">
                             <ul class="resources-body">
-                                <a href="my_question.php">
+                                <a href="member/views/my_question.html.php">
                                     <li class="resources-body-questions">Questions</li>
                                 </a>
                             </ul>
                             <ul class="resources-body">
-                                <a href="modules_show.php">
+                                <a href="member/views/modules_show_stu.html.php">
                                     <li class="resources-body-modules">Modules</li>
                                 </a>
                             </ul>
                             <ul class="resources-body">
-                                <a href="author_show.php">
+                                <a href="member/views/author_show.html.php">
                                     <li class="resources-body-autors">Authors</li>
                                 </a>
                             </ul>
